@@ -29,3 +29,5 @@ Route::get('/users', function () {
     $users = \App\Models\User::all();
     return json_decode($users);
 });
+
+Route::get('/test_dashbaord', [App\Http\Controllers\Dashboard\Index::class, 'index']);
