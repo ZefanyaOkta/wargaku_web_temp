@@ -29,12 +29,35 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+            'nik' => [
+                'required',
+                'string',
+                'max:16',
+                Rule::unique(User::class),
+            ],
+            'phone' => ['required', 'string', 'regex:/^(^08)\d{8,11}$/', 'max:14'],
+            'date_of_birth' => ['required', 'date'],
+            'jenis_kelamin' => ['required', 'string'],
+            'address' => ['required', 'string', 'max:255'],
+            'kecamatan' => ['required', 'string', 'max:255'],
+            'kelurahan' => ['required', 'string', 'max:255'],
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'nik' => $input['nik'],
+            'phone' => $input['phone'],
+            'date_of_birth' => $input['date_of_birth'],
+            'sex' => $input['jenis_kelamin'],
         ]);
+
+        $user->address()->create([
+            'address' => $input['address'],
+            'kecamatan' => $input['kecamatan'],
+            'kelurahan' => $input['kelurahan'],
+        ]);
+        return $user;
     }
 }
