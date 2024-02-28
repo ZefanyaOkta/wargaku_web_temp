@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nik',
+        'phone',
+        'date_of_birth',
+        'sex'
     ];
 
     /**
@@ -42,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function address()
+    {
+        return $this->hasOne(UserAddress::class);
+    }
 }
