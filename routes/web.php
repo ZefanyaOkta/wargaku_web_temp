@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.auth.login');
-});
-
-Route::get('/register', function () {
-    return view('pages.auth.register');
+    redirect('/login');
 });
 
 
@@ -34,4 +30,5 @@ Route::get('/users', function () {
     return json_decode($users);
 });
 
-Route::get('/test_dashbaord', [App\Http\Controllers\Dashboard\Index::class, 'index']);
+
+Route::get('/dashboard', [App\Http\Controllers\Dashboard\Index::class, 'index'])->middleware(['auth'])->name('dashboard');
