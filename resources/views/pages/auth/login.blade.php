@@ -3,7 +3,7 @@
 @section('content')
 <div>
   <h1>Login</h1>
-  <form class="login-form" action=# method=#>
+  <form class="login-form" action={{ route('login')}} method="POST">
     @csrf
     <!-- <img src="{{ asset('storage/images/wargaku_gambar.png') }}" alt=""> -->
     <p>Email</p>
