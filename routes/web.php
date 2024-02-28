@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
+});
+
+
+Route::get('/client', function (Request $request) {
+    return view('client', [
+        'clients' => $request->user()->clients
+    ]);
+});
+
+Route::get('/users', function () {
+    $users = \App\Models\User::all();
+    return json_decode($users);
 });
