@@ -20,6 +20,7 @@ console_command = 'php /var/www/html/artisan tinker'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
   DB_CONNECTION = "pgsql"
+  APP_DEBUG='true'
 
 [http_service]
   internal_port = 8080
