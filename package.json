@@ -6,8 +6,19 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "autoprefixer": "^10.4.17",
         "axios": "^1.6.4",
+        "daisyui": "^4.7.2",
         "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@alpinejs/persist": "^3.12.0",
+        "alpinejs": "^3.13.5",
+        "apexcharts": "^3.36.3",
+        "flatpickr": "^4.6.13",
+        "jsvectormap": "^1.5.1"
     }
 }
