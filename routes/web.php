@@ -42,3 +42,4 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::get('/roles', [App\Http\Controllers\Dashboard\Admin\RolesController::class, 'index'])->name('roles');
     });
 });
+

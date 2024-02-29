@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class EditButton extends Component
 {
+    public $modalId, $data;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($modalId, $rowId, $model)
     {
-        //
+        $this->modalId = $modalId;
+        $this->data = app($model)->find($rowId);
     }
 
     /**

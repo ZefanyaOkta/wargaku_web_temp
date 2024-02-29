@@ -137,8 +137,8 @@
                         </div>
                         <!-- Dropdown Menu End -->
                     </li> --}}
-                    <x-sidebar-menu title="Akun" icon="fa-solid fa-user" href="dashboard.admin.oauth" />
-                    <x-sidebar-menu title="Pengumuman" icon="fa-solid fa-bullhorn" href="dashboard.admin.oauth" />
+                    <x-sidebar-menu title="Akun" icon="fa-solid fa-user" href="dashboard.account" />
+                    <x-sidebar-menu title="Pengumuman" icon="fa-solid fa-bullhorn" href="dashboard.index" />
                     <!-- Menu Item Auth Pages -->
                 </ul>
             </div>

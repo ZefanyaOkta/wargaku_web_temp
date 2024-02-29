@@ -16,9 +16,11 @@ use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Responsive;
 
 final class OAuthClientTable extends PowerGridComponent
 {
+    public int $number = 1;
     public function setUp(): array
     {
         return [
@@ -29,6 +31,7 @@ final class OAuthClientTable extends PowerGridComponent
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
+
         ];
     }
 
@@ -42,6 +45,9 @@ final class OAuthClientTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
+            ->add('number', function () {
+                return $this->number++;
+            })
             ->add('id')
             ->add('name')
             ->add('redirect')
@@ -56,6 +62,9 @@ final class OAuthClientTable extends PowerGridComponent
     {
         return [
             Column::add()
+                ->field('number')
+                ->title('No'),
+            Column::add()
                 ->field('name')
                 ->title('Name'),
             Column::add()
@@ -67,7 +76,7 @@ final class OAuthClientTable extends PowerGridComponent
             Column::add()
                 ->field('secret')
                 ->title('Secret'),
-            Column::action('Action')
+            Column::action('Actions')
         ];
     }
 
@@ -93,13 +102,15 @@ final class OAuthClientTable extends PowerGridComponent
     //     $this->js('alert(' . $rowId . ')');
     // }
 
+
+
     public function actions($row): array
     {
         return [
             Button::make('edit')
-                ->bladeComponent('edit-button', []),
+                ->bladeComponent('edit-button', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'model' => 'Laravel\Passport\Client']),
             Button::make('delete')
-                ->bladeComponent('delete-button', []),
+                ->bladeComponent('delete-button', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id]),
         ];
     }
 

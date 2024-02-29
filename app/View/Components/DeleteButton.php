@@ -8,13 +8,17 @@ use Illuminate\View\Component;
 
 class DeleteButton extends Component
 {
+    public $modalId, $rowId;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($modalId, $rowId)
     {
-        //
+        $this->modalId = $modalId;
+        $this->rowId = $rowId;
     }
+
 
     /**
      * Get the view / contents that represent the component.
