@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
                 'kecamatan' => 'Kecamatan ' . $user->name,
                 'kelurahan' => 'Kelurahan ' . $user->name,
             ]);
+
+            $user->assignRole('user');
         });
     }
 }
