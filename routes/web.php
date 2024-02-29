@@ -37,6 +37,8 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     // Admin (for role admin & super-admin)
     Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
         Route::get('/oauth', [App\Http\Controllers\Dashboard\Admin\OAuthController::class, 'index'])->name('oauth');
+        Route::post('/oauth', [App\Http\Controllers\Dashboard\Admin\OAuthController::class, 'store'])->name('oauth.store');
+
         Route::get('/roles', [App\Http\Controllers\Dashboard\Admin\RolesController::class, 'index'])->name('roles');
     });
 });

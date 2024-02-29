@@ -25,7 +25,7 @@ final class OAuthClientTable extends PowerGridComponent
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+            Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -66,8 +66,8 @@ final class OAuthClientTable extends PowerGridComponent
                 ->title('Redirect'),
             Column::add()
                 ->field('secret')
-                ->title('Secret')
-            // Column::action('Action')
+                ->title('Secret'),
+            Column::action('Action')
         ];
     }
 
@@ -84,8 +84,6 @@ final class OAuthClientTable extends PowerGridComponent
         return [
             Button::make('add', 'Tambah')
                 ->bladeComponent('add-button', ['modalId' => 'modal_1'])
-
-
         ];
     }
 
@@ -95,16 +93,15 @@ final class OAuthClientTable extends PowerGridComponent
     //     $this->js('alert(' . $rowId . ')');
     // }
 
-    // public function actions($row): array
-    // {
-    //     return [
-    //         Button::add('edit')
-    //             ->slot('Edit: ' . $row->id)
-    //             ->id()
-    //             ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-    //             ->dispatch('edit', ['rowId' => $row->id])
-    //     ];
-    // }
+    public function actions($row): array
+    {
+        return [
+            Button::make('edit')
+                ->bladeComponent('edit-button', []),
+            Button::make('delete')
+                ->bladeComponent('delete-button', []),
+        ];
+    }
 
     /*
     public function actionRules(User $row): array
