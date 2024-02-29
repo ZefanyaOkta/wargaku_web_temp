@@ -75,9 +75,8 @@
                         </div>
                         <!-- Dropdown Menu End --></li> --}}
                     <x-sidebar-menu title="Beranda" icon="fa-solid fa-home" href="dashboard.index" />
-                    <x-sidebar-menu title="Roles & Permission" icon="fa-solid fa-users" href="dashboard.index" />
-
-                    <x-sidebar-menu title="Pengaturan OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth" />
+                    <x-sidebar-menu title="Roles" icon="fa-solid fa-users" href="dashboard.admin.roles" />
+                    <x-sidebar-menu title="OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth" />
                 </ul>
             </div>
 
