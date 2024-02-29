@@ -6,8 +6,17 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        './app/Http/Livewire/**/*Table.php',
+        './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
     ],
     darkMode: 'class', // or 'media' or 'class
+    presets: [
+        require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
+    ],
+    daisyui: {
+        themes: ["cupcake", "dark"],
+    },
     theme: {
         screens: {
             '2xsm': '375px',
@@ -333,5 +342,5 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [require('daisyui')],
 }

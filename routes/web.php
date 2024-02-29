@@ -30,5 +30,10 @@ Route::get('/users', function () {
     return json_decode($users);
 });
 
+Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\Dashboard\Index::class, 'index'])->name('index');
+    Route::get('/account', [App\Http\Controllers\Dashboard\AccountSettingController::class, 'index'])->name('account');
 
-Route::get('/dashboard', [App\Http\Controllers\Dashboard\Index::class, 'index'])->middleware(['auth'])->name('dashboard');
+    // Admin
+    Route::get('/admin/oauth', [App\Http\Controllers\Dashboard\Admin\OAuthController::class, 'index'])->name('admin.oauth');
+});

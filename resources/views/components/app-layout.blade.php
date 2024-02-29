@@ -9,6 +9,7 @@
         Dashboard Testing
     </title>
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 
 <body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
@@ -18,12 +19,11 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
-
     <div class="flex h-screen overflow-hidden">
         <!-- ===== Sidebar Start ===== -->
+
         <x-sidebar />
         <!-- ===== Sidebar End ===== -->
-
         <!-- ===== Content Area Start ===== -->
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             <!-- ===== Header Start ===== -->
@@ -32,7 +32,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
             <!-- ===== Main Content Start ===== -->
             <main>
-                {{ $slot }}
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    {{ $slot }}
+                </div>
             </main>
             <!-- ===== Main Content End ===== -->
         </div>
@@ -41,6 +43,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Page Wrapper End ===== -->
     <script src="https://kit.fontawesome.com/728000543f.js" crossorigin="anonymous"></script>
     @vite('resources/js/app.js')
+    @livewireScripts
 </body>
 
 </html>

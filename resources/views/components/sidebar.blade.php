@@ -1,10 +1,10 @@
 <aside :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black  duration-300 ease-linear dark:bg-black lg:static lg:translate-x-0"
     @click.outside="sidebarToggle = false">
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <a href="index.html">
-            <img src="./images/logo/logo.svg" alt="Logo" />
+            <img src="{{ url('images/logo/logo.svg') }}" alt="Logo" />
         </a>
 
         <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
@@ -27,12 +27,14 @@
 
                 <ul class="mb-6 flex flex-col gap-1.5">
                     <!-- Menu Item Dashboard -->
-                    <li>
+                    {{-- <li>
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                             href="#" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
-                            :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Dashboard') || (page === 'ecommerce' ||
-                                    page === 'analytics' || page === 'stocks') }">
-                            <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                            :class="{
+                                'bg-graydark dark:bg-meta-4': (selected === 'Dashboard') || (page === 'ecommerce' ||
+                                    page === 'analytics' || page === 'stocks')
+                            }">
+                            {{-- <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6.10322 0.956299H2.53135C1.5751 0.956299 0.787598 1.7438 0.787598 2.70005V6.27192C0.787598 7.22817 1.5751 8.01567 2.53135 8.01567H6.10322C7.05947 8.01567 7.84697 7.22817 7.84697 6.27192V2.72817C7.8751 1.7438 7.0876 0.956299 6.10322 0.956299ZM6.60947 6.30005C6.60947 6.5813 6.38447 6.8063 6.10322 6.8063H2.53135C2.2501 6.8063 2.0251 6.5813 2.0251 6.30005V2.72817C2.0251 2.44692 2.2501 2.22192 2.53135 2.22192H6.10322C6.38447 2.22192 6.60947 2.44692 6.60947 2.72817V6.30005Z"
@@ -46,9 +48,10 @@
                                 <path
                                     d="M15.4689 9.92822H11.8971C10.9408 9.92822 10.1533 10.7157 10.1533 11.672V15.2438C10.1533 16.2001 10.9408 16.9876 11.8971 16.9876H15.4689C16.4252 16.9876 17.2127 16.2001 17.2127 15.2438V11.7001C17.2127 10.7157 16.4252 9.92822 15.4689 9.92822ZM15.9752 15.272C15.9752 15.5532 15.7502 15.7782 15.4689 15.7782H11.8971C11.6158 15.7782 11.3908 15.5532 11.3908 15.272V11.7001C11.3908 11.4188 11.6158 11.1938 11.8971 11.1938H15.4689C15.7502 11.1938 15.9752 11.4188 15.9752 11.7001V15.272Z"
                                     fill="" />
-                            </svg>
+                            </svg> --}}
+                            {{-- <i class="fa-solid fa-house"></i>
 
-                            Dashboard
+                            Beranda
 
                             <svg class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                                 :class="{ 'rotate-180': (selected === 'Dashboard') }" width="20" height="20"
@@ -70,11 +73,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- Dropdown Menu End -->
-                    </li>
-                    <x-sidebar-menu title="Roles & Permission" icon="fa-solid fa-users" />
+                        <!-- Dropdown Menu End --></li> --}}
+                    <x-sidebar-menu title="Beranda" icon="fa-solid fa-home" href="dashboard.index" />
+                    <x-sidebar-menu title="Roles & Permission" icon="fa-solid fa-users" href="dashboard.index" />
 
-                    <x-sidebar-menu title="OAuth Configuration" icon="fa-solid fa-cog" />
+                    <x-sidebar-menu title="Pengaturan OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth" />
                 </ul>
             </div>
 
@@ -83,13 +86,15 @@
                 <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">OTHERS</h3>
 
                 <ul class="mb-6 flex flex-col gap-1.5">
-                    <li>
+                    {{-- <li>
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                             href="#" @click.prevent="selected = (selected === 'AuthPages' ? '':'AuthPages')"
-                            :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' ||
-                                    page === 'login') }">
-                            <svg class="fill-current" width="18" height="19" viewBox="0 0 18 19"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                            :class="{
+                                'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' ||
+                                    page === 'login')
+                            }">
+                            <svg class="fill-current" width="18" height="19" viewBox="0 0 18 19" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_130_9814)">
                                     <path
                                         d="M12.7127 0.55835H9.53457C8.80332 0.55835 8.18457 1.1771 8.18457 1.90835V3.84897C8.18457 4.18647 8.46582 4.46772 8.80332 4.46772C9.14082 4.46772 9.45019 4.18647 9.45019 3.84897V1.88022C9.45019 1.82397 9.47832 1.79585 9.53457 1.79585H12.7127C13.3877 1.79585 13.9221 2.33022 13.9221 3.00522V15.0709C13.9221 15.7459 13.3877 16.2802 12.7127 16.2802H9.53457C9.47832 16.2802 9.45019 16.2521 9.45019 16.1959V14.2552C9.45019 13.9177 9.16894 13.6365 8.80332 13.6365C8.43769 13.6365 8.18457 13.9177 8.18457 14.2552V16.1959C8.18457 16.9271 8.80332 17.5459 9.53457 17.5459H12.7127C14.0908 17.5459 15.1877 16.4209 15.1877 15.0709V3.03335C15.1877 1.65522 14.0627 0.55835 12.7127 0.55835Z"
@@ -132,7 +137,9 @@
                             </ul>
                         </div>
                         <!-- Dropdown Menu End -->
-                    </li>
+                    </li> --}}
+                    <x-sidebar-menu title="Akun" icon="fa-solid fa-user" href="dashboard.admin.oauth" />
+                    <x-sidebar-menu title="Pengumuman" icon="fa-solid fa-bullhorn" href="dashboard.admin.oauth" />
                     <!-- Menu Item Auth Pages -->
                 </ul>
             </div>
