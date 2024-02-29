@@ -7,5 +7,7 @@ default:
 deploy:
   script:
     - flyctl deploy
-
-
+  only:
+    - main
+  except:
+    - branches
