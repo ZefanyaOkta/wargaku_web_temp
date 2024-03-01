@@ -1,7 +1,7 @@
 <li>
-    <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+    <a class="group relative flex items-center gap-4 px-4 py-2 text-xl font-light text-gray-200 duration-300 ease-in-out hover:bg-white hover:text-primaryRed rounded-lg hover:shadow-md dark:hover:bg-meta-4"
         href="{{ route($href) }}" @click="selected = (selected === {{ $title }} ? '':{{ $title }})"
-        :class="{ 'bg-graydark dark:bg-meta-4': (selected === {{ $title }}) && (page === {{ $title }}) }">
+        :class="{ ' dark:bg-meta-4': (selected === {{ $title }}) && (page === {{ $title }}) }">
         {{-- <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
