@@ -293,8 +293,7 @@
             <div class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="hidden text-right lg:block">
-                        <span class="block text-sm font-medium text-black dark:text-white">Hai, Thomas Anree</span>
-                        <span class="block text-xs font-medium">Have a nice day!</span>
+                        <span class="block text-sm font-medium text-black dark:text-white">{{Auth::user()->name}}</span>
                     </span>
 
                     <div class="avatar">
