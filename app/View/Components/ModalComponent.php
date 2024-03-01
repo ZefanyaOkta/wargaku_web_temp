@@ -6,16 +6,18 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AppLayout extends Component
+class ModalComponent extends Component
 {
-    public $page;
+
+    public $modalId,  $title;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($page)
+    public function __construct($modalId, $title)
     {
-        $this->page = $page;
+        $this->modalId = $modalId;
+        $this->title = $title;
     }
 
     /**
@@ -23,6 +25,6 @@ class AppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.app-layout');
+        return view('components.modal-component');
     }
 }

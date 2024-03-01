@@ -34,6 +34,11 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     Route::get('/', [App\Http\Controllers\Dashboard\Index::class, 'index'])->name('index');
     Route::get('/account', [App\Http\Controllers\Dashboard\AccountSettingController::class, 'index'])->name('account');
 
-    // Admin
-    Route::get('/admin/oauth', [App\Http\Controllers\Dashboard\Admin\OAuthController::class, 'index'])->name('admin.oauth');
+    // Admin (for role admin & super-admin)
+    Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
+        Route::resource('oauth', App\Http\Controllers\Dashboard\Admin\OAuthController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::resource('roles', App\Http\Controllers\Dashboard\Admin\RolesController::class)->only(['index', 'store', 'update', 'destroy']);
+
+    });
 });
+

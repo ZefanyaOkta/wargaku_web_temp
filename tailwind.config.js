@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors.js'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -26,6 +27,7 @@ export default {
         },
         extend: {
             colors: {
+                ...colors,
                 current: 'currentColor',
                 transparent: 'transparent',
                 white: '#FFFFFF',

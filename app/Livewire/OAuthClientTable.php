@@ -16,19 +16,22 @@ use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Responsive;
 
 final class OAuthClientTable extends PowerGridComponent
 {
+    public int $number = 1;
     public function setUp(): array
     {
         return [
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+            Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
+
         ];
     }
 
@@ -42,6 +45,9 @@ final class OAuthClientTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
+            ->add('number', function () {
+                return $this->number++;
+            })
             ->add('id')
             ->add('name')
             ->add('redirect')
@@ -56,8 +62,12 @@ final class OAuthClientTable extends PowerGridComponent
     {
         return [
             Column::add()
+                ->field('number')
+                ->title('No'),
+            Column::add()
                 ->field('name')
-                ->title('Name'),
+                ->title('Name')
+                ->searchable(),
             Column::add()
                 ->field('id')
                 ->title('ID'),
@@ -66,8 +76,8 @@ final class OAuthClientTable extends PowerGridComponent
                 ->title('Redirect'),
             Column::add()
                 ->field('secret')
-                ->title('Secret')
-            // Column::action('Action')
+                ->title('Secret'),
+            Column::action('Actions')
         ];
     }
 
@@ -83,9 +93,7 @@ final class OAuthClientTable extends PowerGridComponent
     {
         return [
             Button::make('add', 'Tambah')
-                ->bladeComponent('add-button', ['modalId' => 'modal_1'])
-
-
+                ->bladeComponent('o-auth.add', ['modalId' => 'modal_1'])
         ];
     }
 
@@ -95,16 +103,17 @@ final class OAuthClientTable extends PowerGridComponent
     //     $this->js('alert(' . $rowId . ')');
     // }
 
-    // public function actions($row): array
-    // {
-    //     return [
-    //         Button::add('edit')
-    //             ->slot('Edit: ' . $row->id)
-    //             ->id()
-    //             ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-    //             ->dispatch('edit', ['rowId' => $row->id])
-    //     ];
-    // }
+
+
+    public function actions($row): array
+    {
+        return [
+            Button::make('edit')
+                ->bladeComponent('o-auth.edit', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Edit Client']),
+            Button::make('delete')
+                ->bladeComponent('o-auth.delete', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Hapus Client']),
+        ];
+    }
 
     /*
     public function actionRules(User $row): array

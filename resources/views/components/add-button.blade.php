@@ -4,3 +4,5 @@ dark:ring-offset-pg-primary-800 dark:text-pg-primary-400 dark:bg-pg-primary-700"
     onclick="{{ $modalId }}.showModal()">
     Tambah
 </button>
+
+

@@ -1,21 +1,23 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\OAuth;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AppLayout extends Component
+class Add extends Component
 {
-    public $page;
+
+    public $modalId;
+
 
     /**
      * Create a new component instance.
      */
-    public function __construct($page)
+    public function __construct($modalId)
     {
-        $this->page = $page;
+        $this->modalId = $modalId;
     }
 
     /**
@@ -23,6 +25,6 @@ class AppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.app-layout');
+        return view('components.o-auth.add');
     }
 }

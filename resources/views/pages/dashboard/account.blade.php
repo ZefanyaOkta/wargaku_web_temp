@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout page="Akun">
     <div class="mx-auto max-w-270">
         <!-- Breadcrumb Start -->
         <div

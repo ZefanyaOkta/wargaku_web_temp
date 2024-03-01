@@ -78,10 +78,21 @@
                     <x-sidebar-menu title="Panduan" icon="fa-solid fa-book" href="dashboard.index" />
 
                     <x-sidebar-menu title="Profil" icon="fa-solid fa-user" href="dashboard.admin.oauth" />
+                    <x-sidebar-menu title="Roles" icon="fa-solid fa-users" href="dashboard.admin.roles.index" />
+                    <x-sidebar-menu title="OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth.index" />
                 </ul>
             </div>
 
             <!-- Others Group -->
+            <div>
+                <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">OTHERS</h3>
+
+                <ul class="mb-6 flex flex-col gap-1.5">
+                    <x-sidebar-menu title="Akun" icon="fa-solid fa-user" href="dashboard.account" />
+                    <x-sidebar-menu title="Pengumuman" icon="fa-solid fa-bullhorn" href="dashboard.index" />
+                    <!-- Menu Item Auth Pages -->
+                </ul>
+            </div>
         </nav>
         <!-- Sidebar Menu -->
     </div>

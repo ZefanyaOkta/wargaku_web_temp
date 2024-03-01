@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Roles;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AppLayout extends Component
+class Permission extends Component
 {
-    public $page;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($page)
+    public function __construct()
     {
-        $this->page = $page;
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class AppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.app-layout');
+        return view('components.roles.permission');
     }
 }
