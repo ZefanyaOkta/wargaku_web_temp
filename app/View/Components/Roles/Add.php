@@ -5,10 +5,11 @@ namespace App\View\Components\Roles;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Spatie\Permission\Models\Permission;
 
 class Add extends Component
 {
-    public $modalId;
+    public $modalId, $permissions;
 
 
     /**
@@ -17,6 +18,7 @@ class Add extends Component
     public function __construct($modalId)
     {
         $this->modalId = $modalId;
+        $this->permissions = Permission::all();
     }
 
     /**
