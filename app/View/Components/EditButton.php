@@ -13,10 +13,9 @@ class EditButton extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($modalId, $rowId, $model)
+    public function __construct($modalId)
     {
         $this->modalId = $modalId;
-        $this->data = app($model)->find($rowId);
     }
 
     /**

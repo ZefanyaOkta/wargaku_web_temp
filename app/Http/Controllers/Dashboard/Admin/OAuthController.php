@@ -32,6 +32,36 @@ class OAuthController extends Controller
             $request->redirect
         );
 
-        return redirect()->route('dashboard.admin.oauth');
+        return redirect()->route('dashboard.admin.oauth.index');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'redirect' => 'required|url',
+        ]);
+
+        $client = $request->user()->clients->find($id);
+
+        $client->name = $request->name;
+        $client->redirect = $request->redirect;
+
+        $client->save();
+
+        return redirect()->route('dashboard.admin.oauth.index');
+    }
+
+    public function destroy($id)
+    {
+        $client = Auth::user()->clients->find($id);
+
+        $client->tokens->each(function ($token) {
+            $token->delete();
+        });
+
+        $client->delete();
+
+        return redirect()->route('dashboard.admin.oauth.index');
     }
 }

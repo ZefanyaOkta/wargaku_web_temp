@@ -1,22 +1,24 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Roles;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Spatie\Permission\Models\Role;
 
-class DeleteButton extends Component
+class Edit extends Component
 {
-    public $modalId;
+    public $modalId, $title, $role;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($modalId)
+    public function __construct($modalId, $title, $rowId)
     {
         $this->modalId = $modalId;
-
+        $this->title = $title;
+        $this->role = Role::find($rowId);
     }
 
 
@@ -25,6 +27,6 @@ class DeleteButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-button');
+        return view('components.roles.edit');
     }
 }

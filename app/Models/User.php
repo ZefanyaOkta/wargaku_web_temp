@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserAddress::class);
     }
+
+    public function avatar(){
+        return 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->name) . '&background=4e73df&color=ffffff&size=100';
+    }
+
 }

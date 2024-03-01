@@ -1,23 +1,26 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\OAuth;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Laravel\Passport\Client;
 
-class ModalComponent extends Component
+class Delete extends Component
 {
-
-    public $modalId,  $title;
-
+    public $modalId,  $title, $client;
     /**
      * Create a new component instance.
      */
-    public function __construct($modalId, $title)
+    public function __construct($modalId, $title, $rowId)
     {
         $this->modalId = $modalId;
         $this->title = $title;
+
+        $data = Client::find($rowId);
+
+        $this->client = $data;
     }
 
     /**
@@ -25,6 +28,6 @@ class ModalComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.modal-component');
+        return view('components.o-auth.delete');
     }
 }
