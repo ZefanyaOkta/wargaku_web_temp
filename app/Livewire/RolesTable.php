@@ -54,6 +54,7 @@ final class RolesTable extends PowerGridComponent
                 ->searchable(),
 
             Column::make('Name', 'name')
+                ->headerAttribute(styleAttr: 'width: 80%;')
                 ->sortable()
                 ->searchable(),
 

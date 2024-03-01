@@ -18,9 +18,19 @@ class RolesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'permissions' => 'array',
         ]);
 
-        Role::create(['name' => $request->name]);
+        if(!$request->permissions) {
+            $request->permissions = [];
+        }
+
+        $role = Role::create(['name' => $request->name]);
+
+        foreach ($request->permissions as $id) {
+            $permission = \Spatie\Permission\Models\Permission::find($id);
+            $role->givePermissionTo($permission->name);
+        }
 
         return redirect()->route('dashboard.admin.roles.index');
     }
