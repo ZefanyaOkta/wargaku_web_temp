@@ -72,18 +72,24 @@ final class RolesTable extends PowerGridComponent
         $this->js('alert(' . $rowId . ')');
     }
 
-    public function actions($row): array
+    public function header(): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: ' . $row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id]),
-            Button::add('Detail')
-                ->slot('Detail: ' . $row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
+            Button::make('add', 'Tambah')
+                ->bladeComponent('roles.add', ['modalId' => 'modal_1'])
+        ];
+    }
+
+    public function actions($row): array
+    {
+         return [
+            Button::make('permissions')
+                ->bladeComponent('roles.permission', ['modalId' => 'modal_permissions_' . $row->id, 'rowId' => $row->id, 'title' => 'Permissions']),
+            Button::make('edit')
+                ->bladeComponent('roles.edit', ['modalId' => 'modal_edit_' .$row->id, 'rowId' => $row->id, 'title' => 'Edit Roles']),
+            Button::make('delete')
+                ->bladeComponent('roles.delete', ['modalId' => 'modal_delete_' . $row->id, 'rowId' => $row->id, 'title' => 'Hapus Roles']),
+
         ];
     }
 

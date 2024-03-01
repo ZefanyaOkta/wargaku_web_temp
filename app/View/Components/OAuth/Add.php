@@ -1,14 +1,16 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\OAuth;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DeleteButton extends Component
+class Add extends Component
 {
+
     public $modalId;
+
 
     /**
      * Create a new component instance.
@@ -16,15 +18,13 @@ class DeleteButton extends Component
     public function __construct($modalId)
     {
         $this->modalId = $modalId;
-
     }
-
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-button');
+        return view('components.o-auth.add');
     }
 }

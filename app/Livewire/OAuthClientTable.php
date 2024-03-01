@@ -66,7 +66,8 @@ final class OAuthClientTable extends PowerGridComponent
                 ->title('No'),
             Column::add()
                 ->field('name')
-                ->title('Name'),
+                ->title('Name')
+                ->searchable(),
             Column::add()
                 ->field('id')
                 ->title('ID'),
@@ -92,7 +93,7 @@ final class OAuthClientTable extends PowerGridComponent
     {
         return [
             Button::make('add', 'Tambah')
-                ->bladeComponent('add-button', ['modalId' => 'modal_1'])
+                ->bladeComponent('o-auth.add', ['modalId' => 'modal_1'])
         ];
     }
 
@@ -108,9 +109,9 @@ final class OAuthClientTable extends PowerGridComponent
     {
         return [
             Button::make('edit')
-                ->bladeComponent('edit-button', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'model' => 'Laravel\Passport\Client']),
+                ->bladeComponent('o-auth.edit', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Edit Client']),
             Button::make('delete')
-                ->bladeComponent('delete-button', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id]),
+                ->bladeComponent('o-auth.delete', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Hapus Client']),
         ];
     }
 
