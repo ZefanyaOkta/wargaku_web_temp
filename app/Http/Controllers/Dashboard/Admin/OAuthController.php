@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\Client;
 use Laravel\Passport\ClientRepository;
-
 
 class OAuthController extends Controller
 {
     public function __construct()
     {
-        // $this->authorizeResource(ClientRepository::class, 'oauth');
+        $this->authorizeResource(Client::class, 'oauth');
     }
 
     public function index(Request $request)
