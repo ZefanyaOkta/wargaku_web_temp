@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    redirect('/login');
+    return redirect()->route('login');
 });
 
 
@@ -38,6 +38,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
         Route::resource('oauth', App\Http\Controllers\Dashboard\Admin\OAuthController::class)->only(['index', 'store', 'update', 'destroy']);
         Route::resource('roles', App\Http\Controllers\Dashboard\Admin\RolesController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::resource('permissions', App\Http\Controllers\Dashboard\Admin\PermissionController::class)->only(['index', 'store', 'update', 'destroy']);
 
     });
 });

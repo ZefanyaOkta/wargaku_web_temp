@@ -11,7 +11,7 @@
             <input class="input-field" name="email" type="text" placeholder="Masukkan username atau email anda...">
             <p class="label-login">Password</p>
             <input class="input-field" name="password" type="password" placeholder="Masukkan password anda...">
-            <a class="forgot-password-link" href=#>Lupa Password?</a>
+            <a class="forgot-password-link" href={{route('password.request')}}>Lupa Password?</a>
             <button class="login-button">MASUK</button>
             <a class="dont-have">Belum punya akun?</a>
             <a class="registration-link" href={{route('register')}}>Silahkan Register Disini</a>
