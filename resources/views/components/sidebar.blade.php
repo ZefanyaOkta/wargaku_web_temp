@@ -29,15 +29,20 @@
 
                     <x-sidebar-menu title="Beranda" icon="fa-solid fa-home" href="dashboard.index" />
                     <x-sidebar-menu title="Panduan" icon="fa-solid fa-book" href="dashboard.index" />
-                    {{-- <x-sidebar-menu title="Profil" icon="fa-solid fa-user" href="dashboard.account" /> --}}
-                    <x-sidebar-dropdown-menu title="Roles & Permission"  icon="fa-solid fa-shield-halved">
-                        <x-slot:menu>
-                            <x-sidebar-menu title="Roles" icon="" href="dashboard.admin.roles.index" />
-                            <x-sidebar-menu title="Permission" icon="" href="dashboard.admin.permissions.index" />
-                        </x-slot:menu>
-                    </x-sidebar-dropdown-menu>
 
-                    <x-sidebar-menu title="OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth.index" />
+                    @foreach ($menus as $menu)
+                        <x-sidebar-menu title="{{ $menu['title'] }}" icon="{{ $menu['icon'] }}"
+                            href="{{ $menu['href'] }}" />
+                    @endforeach
+                    {{-- <x-sidebar-menu title="Profil" icon="fa-solid fa-user" href="dashboard.account" /> --}}
+                        {{-- <x-sidebar-dropdown-menu title="Roles & Permission"  icon="fa-solid fa-shield-halved">
+                            <x-slot:menu>
+                                <x-sidebar-menu title="Roles" icon="" href="dashboard.admin.roles.index" />
+                                <x-sidebar-menu title="Permission" icon="" href="dashboard.admin.permissions.index" />
+                            </x-slot:menu>
+                        </x-sidebar-dropdown-menu>
+
+                        <x-sidebar-menu title="OAuth" icon="fa-solid fa-cog" href="dashboard.admin.oauth.index" /> --}}
                 </ul>
             </div>
 

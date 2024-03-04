@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class Sidebar extends Component
 {
+    public $menus;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->menus = $this->createMenus();
     }
 
     /**
@@ -22,5 +24,41 @@ class Sidebar extends Component
     public function render(): View|Closure|string
     {
         return view('components.sidebar');
+    }
+
+    public function createMenus()
+    {
+        // Menu Attributr : title, icon, href
+
+        //Permission : menu-"menu name", Example : menu-roles, menu-permissions
+
+        $permission = [
+            'roles' => 'menu-roles',
+            'permissions' => 'menu-permissions',
+            'oauth' => 'menu-oauth',
+        ];
+
+        //Guest Menu: Beranda, Akun, Pengumuman
+        $main_menus = [];
+
+        auth()->user()->can('menu-roles') ? array_push($main_menus, [
+            'title' => 'Roles',
+            'icon' => 'fa-solid fa-users',
+            'href' => "dashboard.admin.roles.index"
+        ]) : null;
+
+        auth()->user()->can('menu-permissions') ? array_push($main_menus, [
+            'title' => 'Permissions',
+            'icon' => 'fa-solid fa-lock',
+            'href' => "dashboard.admin.permissions.index"
+        ]) : null;
+
+        auth()->user()->can('menu-oauth') ? array_push($main_menus, [
+            'title' => 'OAuth',
+            'icon' => 'fa-solid fa-cog',
+            'href' => "dashboard.admin.oauth.index"
+        ]) : null;
+
+        return $main_menus;
     }
 }

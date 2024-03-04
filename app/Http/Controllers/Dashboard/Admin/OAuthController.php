@@ -10,13 +10,15 @@ use Laravel\Passport\ClientRepository;
 
 class OAuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Client::class, 'oauth');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Client::class, 'oauth');
+    // }
 
     public function index(Request $request)
     {
+        $this->authorize('lihat konfigurasi oauth', Client::class);
+
         $clients = $request->user()->clients;
 
         return view('pages.dashboard.admin.oauth', compact('clients'));
@@ -24,6 +26,8 @@ class OAuthController extends Controller
 
     public function store(Request $request, ClientRepository $clientRepository)
     {
+        $this->authorize('tambah konfigurasi oauth', Client::class);
+
         $request->validate([
             'name' => 'required',
             'redirect' => 'required|url',
@@ -40,6 +44,8 @@ class OAuthController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('edit konfigurasi oauth', Client::class);
+
         $request->validate([
             'name' => 'required',
             'redirect' => 'required|url',
@@ -57,6 +63,8 @@ class OAuthController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('hapus konfigurasi oauth', Client::class);
+
         $client = Auth::user()->clients->find($id);
 
         $client->tokens->each(function ($token) {

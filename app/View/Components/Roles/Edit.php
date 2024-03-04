@@ -5,11 +5,12 @@ namespace App\View\Components\Roles;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class Edit extends Component
 {
-    public $modalId, $title, $role;
+    public $modalId, $title, $role, $permissions;
 
     /**
      * Create a new component instance.
@@ -19,6 +20,7 @@ class Edit extends Component
         $this->modalId = $modalId;
         $this->title = $title;
         $this->role = Role::find($rowId);
+        $this->permissions = Permission::all();
     }
 
 

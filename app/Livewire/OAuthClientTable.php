@@ -45,9 +45,6 @@ final class OAuthClientTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('number', function () {
-                return $this->number++;
-            })
             ->add('id')
             ->add('name')
             ->add('redirect')
@@ -61,9 +58,6 @@ final class OAuthClientTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::add()
-                ->field('number')
-                ->title('No'),
             Column::add()
                 ->field('name')
                 ->title('Name')
@@ -91,6 +85,10 @@ final class OAuthClientTable extends PowerGridComponent
 
     public function header(): array
     {
+        if (!auth()->user()->can('tambah konfigurasi oauth')) {
+            return [];
+        }
+
         return [
             Button::make('add', 'Tambah')
                 ->bladeComponent('o-auth.add', ['modalId' => 'modal_1'])
@@ -115,15 +113,18 @@ final class OAuthClientTable extends PowerGridComponent
         ];
     }
 
-    /*
-    public function actionRules(User $row): array
+
+    public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
+                ->when(fn() => auth()->user()->can('edit konfigurasi oauth') === false)
+                ->hide(),
+            Rule::button('delete')
+                ->when(fn() => auth()->user()->can('hapus konfigurasi oauth') === false)
                 ->hide(),
         ];
     }
-    */
+
 }

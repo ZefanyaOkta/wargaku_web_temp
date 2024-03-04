@@ -13,6 +13,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        $this->authorize('lihat permissions', Permission::class);
 
         return view('pages.dashboard.admin.permissions');
     }
@@ -30,6 +31,8 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('tambah permissions', Permission::class);
+
         $request->validate([
             'name' => 'required',
         ]);
@@ -60,6 +63,8 @@ class PermissionController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('edit permissions', Permission::class);
+
         $request->validate([
             'name' => 'required',
         ]);
@@ -76,6 +81,8 @@ class PermissionController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('hapus permissions', Permission::class);
+
         $permission = Permission::find($id);
         $permission->delete();
 
