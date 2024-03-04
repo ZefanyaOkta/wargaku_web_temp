@@ -9,8 +9,16 @@ use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
+
+    public function __construct()
+    {
+       $this->authorizeResource(Role::class, 'roles');
+    }
+
+
     public function index(Request $request)
     {
+
         return view('pages.dashboard.admin.roles');
     }
 

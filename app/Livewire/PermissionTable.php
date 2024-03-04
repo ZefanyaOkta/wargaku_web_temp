@@ -4,11 +4,13 @@ namespace App\Livewire;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
+use PowerComponents\LivewirePowerGrid\Facades\Rule;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -22,7 +24,6 @@ final class PermissionTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        $this->showCheckBox();
 
         return [
             Exportable::make('export')
@@ -58,26 +59,12 @@ final class PermissionTable extends PowerGridComponent
                 ->searchable(),
 
             Column::make('Name', 'name')
+                ->headerAttribute(styleAttr: 'width: 80%;')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Guard name', 'guard_name')
-                ->sortable()
-                ->searchable(),
+            Column::action("Action")
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
-            Column::make('Created at', 'created_at')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Updated at', 'updated_at_formatted', 'updated_at')
-                ->sortable(),
-
-            Column::make('Updated at', 'updated_at')
-                ->sortable()
-                ->searchable(),
 
         ];
     }
@@ -85,6 +72,14 @@ final class PermissionTable extends PowerGridComponent
     public function filters(): array
     {
         return [
+        ];
+    }
+
+    public function header(): array
+    {
+        return [
+            Button::make('add', 'Tambah')
+                ->bladeComponent('permission.add', ['modalId' => 'modal_1'])
         ];
     }
 
@@ -96,24 +91,27 @@ final class PermissionTable extends PowerGridComponent
 
     public function actions($row): array
     {
-        return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+         return [
+            Button::make('edit')
+                ->bladeComponent('permission.edit', ['modalId' => 'modal_edit_' .$row->id, 'rowId' => $row->id, 'title' => 'Edit Permission']),
+            Button::make('delete')
+                ->bladeComponent('permission.delete', ['modalId' => 'modal_delete_' . $row->id, 'rowId' => $row->id, 'title' => 'Hapus Permission']),
         ];
     }
 
-    /*
+/*
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
+                ->when(fn() => Auth::user()->can('ubah role') === false)
                 ->hide(),
+            Rule::button('delete')
+                ->when(fn() => Auth::user()->can('hapus ro                ->hide(),le') === false)
+
         ];
     }
     */
+
 }

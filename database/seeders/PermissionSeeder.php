@@ -22,11 +22,19 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'hapus roles']);
 
         //OAuth configuration permissions
-        Permission::create(['name' => 'menu-OAuth']);
-        Permission::create(['name' => 'akses konfigurasi OAuth']);
-        Permission::create(['name' => 'tambah konfigurasi OAuth']);
-        Permission::create(['name' => 'edit konfigurasi OAuth']);
-        Permission::create(['name' => 'hapus konfigurasi OAuth']);
+        Permission::create(['name' => 'menu-oauth']);
+        Permission::create(['name' => 'lihat konfigurasi oauth']);
+        Permission::create(['name' => 'tambah konfigurasi oauth']);
+        Permission::create(['name' => 'edit konfigurasi oauth']);
+        Permission::create(['name' => 'hapus konfigurasi oauth']);
+
+        //Permissions permissions
+        Permission::create(['name' => 'menu-permissions']);
+        Permission::create(['name' => 'lihat permissions']);
+        Permission::create(['name' => 'tambah permissions']);
+        Permission::create(['name' => 'edit permissions']);
+        Permission::create(['name' => 'hapus permissions']);
+
 
 
         $admin = Role::where('name', 'admin')->first();

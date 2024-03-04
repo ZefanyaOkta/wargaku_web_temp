@@ -9,6 +9,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
+use PowerComponents\LivewirePowerGrid\Facades\Rule;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -94,15 +95,16 @@ final class RolesTable extends PowerGridComponent
         ];
     }
 
-    /*
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
+                ->when(fn() => auth()->user()->can('ubah role') === false)
+                ->hide(),
+            Rule::button('delete')
+                ->when(fn() => auth()->user()->can('hapus role') === false)
                 ->hide(),
         ];
     }
-    */
 }

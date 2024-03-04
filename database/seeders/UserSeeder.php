@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'kelurahan' => 'Kelurahan ' . $user->name,
             ]);
 
-            $user->assignRole('user');
+            $user->assignRole('User');
         });
     }
 }

@@ -11,9 +11,13 @@ use Laravel\Passport\ClientRepository;
 
 class OAuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(ClientRepository::class, 'oauth');
+    }
+
     public function index(Request $request)
     {
-
         $clients = $request->user()->clients;
 
         return view('pages.dashboard.admin.oauth', compact('clients'));

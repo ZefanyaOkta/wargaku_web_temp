@@ -2,7 +2,7 @@
     <div>
         <div class="mb-6 flex flex-row gap-3 items-center justify-between">
             <h2 class="text-xl font-bold text-black dark:text-white">
-                Roles & Permission
+                Roles
             </h2>
 
             <nav>

@@ -5,6 +5,15 @@
   <form action="{{route('dashboard.admin.oauth.update', ['oauth' => $client->id])}}" method="POST">
             @csrf
             @method('PUT')
+            @if($errors->any())
+            <x-alert type="danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </x-alert>
+        @endif
             <div class="p-1">
                 <div class="mb-3">
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">

@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             ]
         );
 
-        $admin->assignRole('admin');
+        $admin->assignRole('Admin');
 
         $superAdmin = \App\Models\User::factory()->create(
             [
@@ -28,6 +28,6 @@ class AdminSeeder extends Seeder
             ]
         );
 
-        $superAdmin->assignRole('super-admin');
+        $superAdmin->assignRole('Super Admin');
     }
 }
