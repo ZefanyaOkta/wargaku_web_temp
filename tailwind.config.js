@@ -63,6 +63,9 @@ export default {
                 success: '#219653',
                 danger: '#D34053',
                 warning: '#FFA70B',
+                primaryRed:' #DC3545',
+                'gray-200': '#f2f2f2',
+                'graytitle': '#4c4c4c',
             },
             fontSize: {
                 'title-xxl': ['44px', '55px'],
