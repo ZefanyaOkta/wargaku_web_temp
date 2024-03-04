@@ -37,7 +37,7 @@ class PermissionSeeder extends Seeder
 
 
 
-        $admin = Role::where('name', 'admin')->first();
+        $admin = Role::where('name', 'Admin')->first();
 
         $admin->givePermissionTo([
             'menu-roles',
@@ -45,11 +45,11 @@ class PermissionSeeder extends Seeder
             'tambah roles',
             'edit roles',
             'hapus roles',
-            'menu-OAuth',
-            'akses konfigurasi OAuth',
-            'tambah konfigurasi OAuth',
-            'edit konfigurasi OAuth',
-            'hapus konfigurasi OAuth',
+            'menu-oauth',
+            'lihat konfigurasi oauth',
+            'tambah konfigurasi oauth',
+            'edit konfigurasi oauth',
+            'hapus konfigurasi oauth',
         ]);
     }
 }
