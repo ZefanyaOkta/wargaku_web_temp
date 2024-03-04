@@ -4,7 +4,7 @@ onclick="{{ $modalId }}.showModal()"
     <i class="fa-solid fa-key"></i>
 </button>
 
-<x-modal-component title="Edit Role Permission" modalId={{$modalId}}>
+<x-modal-component title="Role Permission" modalId={{$modalId}}>
             <div class="grid grid-cols-3 gap-4 py-3 mb-4" x-data="{ masterCheckbox: false }">
                 {{-- <div class="flex items" >
                     <input type="checkbox" @click="masterCheckbox = !masterCheckbox"
