@@ -13,7 +13,7 @@ class OAuthController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(ClientRepository::class, 'oauth');
+        // $this->authorizeResource(ClientRepository::class, 'oauth');
     }
 
     public function index(Request $request)
