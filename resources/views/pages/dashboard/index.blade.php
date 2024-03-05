@@ -1,13 +1,27 @@
 <x-app-layout page="Beranda">
 
     {{-- === TITLE === --}}
-    <div class="mx-auto max-w-270">
+    {{-- <div class="mx-auto max-w-270">
         <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-graytitle dark:text-white">Layanan WargaKu</h2>
         </div>
 
 
+    </div> --}}
+    <div class="mb-6 flex flex-row gap-3 items-center justify-between">
+        <h2 class="text-xl font-bold text-black dark:text-white">
+            Layanan WargaKu
+        </h2>
+
+        <nav>
+            <ol class="flex items-center gap-2">
+                <li>
+                    <a class="font-medium" href="index.html">Dashboard</a>
+                </li>
+            </ol>
+        </nav>
     </div>
+
 
     <div class="col-span-5 xl:col-span-3">
         <div class="rounded-lg shadow-md bg-white dark:border-strokedark dark:bg-boxdark">
