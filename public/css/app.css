@@ -141,7 +141,17 @@ input::placeholder {
 
 .reg-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.reg-left {
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.reg-rightside {
+    width: 48%;
+    box-sizing: border-box;
 }
 
 .column-left,
@@ -168,14 +178,13 @@ input::placeholder {
 
 .input-container-register {
     display: flex;
-    align-items: center;
-    justify-content:space-evenly;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .reg-left {
     margin-right: 10px;
 }
-
 
 
 .input-field-register,
@@ -259,11 +268,14 @@ textarea {
         align-items: center;
     }
 
+    .reg-left{
+        width: 100%;
+    }
+
     .login-container,
     .registration-container {
         width: 80%;
         margin-left: 0;
-
     }
 
     .registration-container {
