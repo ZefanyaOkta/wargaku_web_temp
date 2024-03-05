@@ -5,6 +5,15 @@
     <h1 class="label-daftar">DAFTAR</h1>
     <form class="registration-form" action={{ route('register') }} method="POST">
         @csrf
+        @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+@endif
         <div class="input-container-register">
             <p>Email</p>
             <input class="input-field-register" name="email" type="text" placeholder="Email atau Username Anda...">
@@ -55,7 +64,7 @@
         </div>
         <div class="input-container-register">
             <p>Konfirmasi Password</p>
-            <input class="input-field-register" name="password" type="password" placeholder="Konfirmasi Password Anda...">
+            <input class="input-field-register" name="password_confirmation" type="password" placeholder="Konfirmasi Password Anda...">
         </div>
         <br>
         <p class="agreement-text">Dengan Klik Tombol "REGISTER", Anda Setuju Dengan Kebijakan Privasi Tentang

@@ -187,6 +187,17 @@ textarea {
     opacity: 80%;
 }
 
+.alert{
+    display: flex;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #fff;
+    background-color: #d34053;
+}
+
 @media (max-width: 600px) {
     .bg-coverlogin {
         background-size: cover;
