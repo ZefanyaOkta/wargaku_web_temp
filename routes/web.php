@@ -40,6 +40,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::resource('oauth', App\Http\Controllers\Dashboard\Admin\OAuthController::class)->only(['index', 'store', 'update', 'destroy']);
         Route::resource('roles', App\Http\Controllers\Dashboard\Admin\RolesController::class)->only(['index', 'store', 'update', 'destroy']);
         Route::resource('permissions', App\Http\Controllers\Dashboard\Admin\PermissionController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::resource('categories', App\Http\Controllers\Dashboard\Admin\CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
     });
 });
 

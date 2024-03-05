@@ -32,7 +32,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
             <!-- ===== Main Content Start ===== -->
             <main>
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                <div class="mx-auto max-w-screen-2xl p-7 md:p-10 2xl:p-15">
                 {{-- <x-content /> --}}
                     {{ $slot }}
                 </div>

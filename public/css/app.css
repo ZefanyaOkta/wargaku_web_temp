@@ -129,9 +129,9 @@ input::placeholder {
 }
 
 .registration-container {
-    width: 500px;
+    width: 600px;
     /* margin: 0 auto; */
-    margin-left: 40%;
+    margin-left: 45%;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -141,7 +141,17 @@ input::placeholder {
 
 .reg-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.reg-left {
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.reg-rightside {
+    width: 48%;
+    box-sizing: border-box;
 }
 
 .column-left,
@@ -159,8 +169,8 @@ input::placeholder {
     margin: 0;
     margin-bottom: 3px;
     margin-right: 10px;
-
 }
+
 .registration-form {
     display: flex;
     flex-direction: column;
@@ -168,9 +178,13 @@ input::placeholder {
 
 .input-container-register {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
+.reg-left {
+    margin-right: 10px;
+}
 
 
 .input-field-register,
@@ -182,6 +196,7 @@ textarea {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+
 }
 
 .select-field-register {
@@ -243,7 +258,7 @@ textarea {
     background-color: #d34053;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .bg-coverlogin {
         background-size: cover;
         background-position: center;
@@ -253,9 +268,14 @@ textarea {
         align-items: center;
     }
 
+    .reg-left{
+        width: 100%;
+    }
+
     .login-container,
     .registration-container {
         width: 80%;
+        margin-left: 0;
     }
 
     .registration-container {
@@ -296,5 +316,10 @@ textarea {
     .agreement-text {
         font-size: 12px;
         /* Adjust font size for links and texts */
+    }
+
+    .reg-container{
+        gap: 10px;
+        flex-direction: column;
     }
 }
