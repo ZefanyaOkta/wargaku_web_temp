@@ -33,13 +33,13 @@ Route::get('/users', function () {
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\Index::class, 'index'])->name('index');
     Route::get('/account', [App\Http\Controllers\Dashboard\AccountSettingController::class, 'index'])->name('account');
+    Route::get('/account', [App\Http\Controllers\Dashboard\PanduanController::class, 'index'])->name('panduan');
 
     // Admin (for role admin & super-admin)
-    Route::prefix('admin')->name('admin.')->middleware(['role:Admin|Super Admin'])->group(function () {
+    Route::prefix('admin')->name('admin.')->middleware(['role:Admin'])->group(function () {
         Route::resource('oauth', App\Http\Controllers\Dashboard\Admin\OAuthController::class)->only(['index', 'store', 'update', 'destroy']);
         Route::resource('roles', App\Http\Controllers\Dashboard\Admin\RolesController::class)->only(['index', 'store', 'update', 'destroy']);
         Route::resource('permissions', App\Http\Controllers\Dashboard\Admin\PermissionController::class)->only(['index', 'store', 'update', 'destroy']);
-
     });
 });
 

@@ -21,7 +21,7 @@ class RolesPolicy
      */
     public function view(User $user, Role $role): bool
     {
-        //
+        return $user->can('lihat roles');
     }
 
     /**
@@ -61,6 +61,6 @@ class RolesPolicy
      */
     public function forceDelete(User $user, Role $role): bool
     {
-        //
+        return $user->can('hapus roles');
     }
 }

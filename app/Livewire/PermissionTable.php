@@ -77,6 +77,10 @@ final class PermissionTable extends PowerGridComponent
 
     public function header(): array
     {
+        if(Auth::user()->can('tambah permissions') === false){
+            return [];
+        }
+
         return [
             Button::make('add', 'Tambah')
                 ->bladeComponent('permission.add', ['modalId' => 'modal_1'])
@@ -99,19 +103,20 @@ final class PermissionTable extends PowerGridComponent
         ];
     }
 
-/*
+
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn() => Auth::user()->can('ubah role') === false)
+                ->when(fn() => Auth::user()->can('edit permissions') === false)
                 ->hide(),
             Rule::button('delete')
-                ->when(fn() => Auth::user()->can('hapus ro                ->hide(),le') === false)
+                ->when(fn() => Auth::user()->can('hapus permissions') === false)
+                ->hide(),
 
         ];
     }
-    */
+
 
 }

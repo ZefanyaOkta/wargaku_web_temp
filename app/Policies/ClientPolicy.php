@@ -14,7 +14,7 @@ class ClientPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('akses konfigurasi OAuth');
+        return $user->can('lihat konfigurasi oauth');
     }
 
     /**
@@ -30,7 +30,7 @@ class ClientPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('akses konfigurasi OAuth');
+        return $user->can('akses konfigurasi oauth');
     }
 
     /**

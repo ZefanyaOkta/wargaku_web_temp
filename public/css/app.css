@@ -39,7 +39,7 @@ h1 {
 }
 
 .label-login {
-    font-size:15px;
+    font-size: 15px;
     font-weight: 300;
     color: #737373;
     margin-bottom: 5px;
@@ -136,6 +136,7 @@ input::placeholder {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .reg-container {
@@ -158,9 +159,19 @@ input::placeholder {
     margin: 0;
     margin-bottom: 3px;
     margin-right: 10px;
-    font-size: 14px;
-    width: 233px;
+
 }
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container-register {
+    display: flex;
+    align-items: center;
+}
+
+
 
 .input-field-register,
 .select-field-register,
@@ -219,4 +230,71 @@ textarea {
 
 .login-link:hover {
     font-weight: 400;
+}
+
+.alert{
+    display: flex;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #fff;
+    background-color: #d34053;
+}
+
+@media (max-width: 600px) {
+    .bg-coverlogin {
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        min-width: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container,
+    .registration-container {
+        width: 80%;
+    }
+
+    .registration-container {
+        margin-top: 30px;
+    }
+
+    .label-login,
+    .label-daftar {
+        font-size: 14px;
+        /* Adjust font size for labels */
+    }
+
+    .input-container-register{
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .input-container-register p {
+        margin-right: 0;
+        /* Adjust the spacing between label and input */
+        font-size: 14px;
+        width: 100%;
+
+    }
+
+    .input-field,
+    .input-field-register,
+    .select-field-register,
+    textarea {
+        font-size: 14px;
+        /* Adjust font size for input fields */
+    }
+
+    .forgot-password-link,
+    .dont-have,
+    .registration-link,
+    .agreement-text {
+        font-size: 12px;
+        /* Adjust font size for links and texts */
+    }
 }

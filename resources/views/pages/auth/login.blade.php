@@ -7,6 +7,15 @@
         <h1>LOGIN</h1>
         <form action={{ route('login')}} method="POST">
             @csrf
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            </div>
+    @endif
             <p class="label-login">Username atau Email</p>
             <input class="input-field" name="email" type="text" placeholder="Masukkan username atau email anda...">
             <p class="label-login">Password</p>

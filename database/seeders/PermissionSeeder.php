@@ -17,6 +17,7 @@ class PermissionSeeder extends Seeder
         //roles permissions
         Permission::create(['name' => 'menu-roles']);
         Permission::create(['name' => 'lihat roles']);
+        Permission::create(['name' => 'lihat roles permissions']);
         Permission::create(['name' => 'tambah roles']);
         Permission::create(['name' => 'edit roles']);
         Permission::create(['name' => 'hapus roles']);
@@ -35,21 +36,25 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit permissions']);
         Permission::create(['name' => 'hapus permissions']);
 
-
-
-        $admin = Role::where('name', 'admin')->first();
+        $admin = Role::where('name', 'Admin')->first();
 
         $admin->givePermissionTo([
             'menu-roles',
             'lihat roles',
+            'lihat roles permissions',
             'tambah roles',
             'edit roles',
             'hapus roles',
-            'menu-OAuth',
-            'akses konfigurasi OAuth',
-            'tambah konfigurasi OAuth',
-            'edit konfigurasi OAuth',
-            'hapus konfigurasi OAuth',
+            'menu-oauth',
+            'lihat konfigurasi oauth',
+            'tambah konfigurasi oauth',
+            'edit konfigurasi oauth',
+            'hapus konfigurasi oauth',
+            'menu-permissions',
+            'lihat permissions',
+            'tambah permissions',
+            'edit permissions',
+            'hapus permissions',
         ]);
     }
 }

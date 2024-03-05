@@ -76,6 +76,10 @@ final class RolesTable extends PowerGridComponent
 
     public function header(): array
     {
+        if(auth()->user()->can('tambah roles') === false){
+            return [];
+        }
+
         return [
             Button::make('add', 'Tambah')
                 ->bladeComponent('roles.add', ['modalId' => 'modal_1'])
@@ -84,11 +88,11 @@ final class RolesTable extends PowerGridComponent
 
     public function actions($row): array
     {
-         return [
+        return [
             Button::make('permissions')
                 ->bladeComponent('roles.permission', ['modalId' => 'modal_permissions_' . $row->id, 'rowId' => $row->id, 'title' => 'Permissions']),
             Button::make('edit')
-                ->bladeComponent('roles.edit', ['modalId' => 'modal_edit_' .$row->id, 'rowId' => $row->id, 'title' => 'Edit Roles']),
+                ->bladeComponent('roles.edit', ['modalId' => 'modal_edit_' . $row->id, 'rowId' => $row->id, 'title' => 'Edit Roles']),
             Button::make('delete')
                 ->bladeComponent('roles.delete', ['modalId' => 'modal_delete_' . $row->id, 'rowId' => $row->id, 'title' => 'Hapus Roles']),
 
@@ -97,13 +101,16 @@ final class RolesTable extends PowerGridComponent
 
     public function actionRules($row): array
     {
-       return [
+        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn() => auth()->user()->can('ubah role') === false)
+                ->when(fn () => auth()->user()->can('edit roles') === false)
                 ->hide(),
             Rule::button('delete')
-                ->when(fn() => auth()->user()->can('hapus role') === false)
+                ->when(fn () => auth()->user()->can('hapus roles') === false)
+                ->hide(),
+            Rule::button('permissions')
+                ->when(fn () => auth()->user()->can('lihat roles permissions') === false)
                 ->hide(),
         ];
     }

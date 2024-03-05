@@ -21,13 +21,13 @@ class AdminSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
-        $superAdmin = \App\Models\User::factory()->create(
-            [
-                'name' => 'Super Admin',
-                'email' => 'superadmin@gmail.com'
-            ]
-        );
+        // $superAdmin = \App\Models\User::factory()->create(
+        //     [
+        //         'name' => 'Super Admin',
+        //         'email' => 'superadmin@gmail.com'
+        //     ]
+        // );
 
-        $superAdmin->assignRole('Super Admin');
+        // $superAdmin->assignRole('Super-Admin');
     }
 }
