@@ -20,13 +20,17 @@
     </div>
     </div> --}}
 
-    <div class="grid grid-cols-3 gap-4 p-4">
-        @for ($i = 1; $i <= 9; $i++) <div class="flex bg-white p-4 shadow-md rounded-md items-center">
-            {{-- Cell {{ $i }} --}}
-            <img class="w-20 ml-2 mr-3" src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo" />
-            <div class="text-lg">Pengaduan Masyarakat</div>
-    </div>
-    @endfor
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 p-4">
+        @foreach ($categories as $category)
+        <a href="{{$category->link}}" class="flex bg-white p-4 shadow-md rounded-md items-center transition ease-in-out delay-100 hover:scale-105 duration-300">
+            {{-- categories attribute --}}
+            {{-- - Image
+            - Title
+            - Href/Link --}}
+            <img class="w-20 ml-2 mr-3" src="{{ $category->image }}" alt="Logo" />
+        <div class="text-lg">{{$category->name}}</div>
+    </a>
+    @endforeach
     </div>
 
     </div>

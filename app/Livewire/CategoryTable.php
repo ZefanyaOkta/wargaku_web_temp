@@ -22,7 +22,7 @@ final class CategoryTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        $this->showCheckBox();
+       // $this->showCheckBox();
 
         return [
             Exportable::make('export')
@@ -49,7 +49,7 @@ final class CategoryTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('id')
-            ->add('created_at');
+            ->add('name');
     }
 
     public function columns(): array
@@ -59,10 +59,7 @@ final class CategoryTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
-            Column::make('Created at', 'created_at')
+            Column::make('Name', 'name')
                 ->sortable()
                 ->searchable(),
 
@@ -82,16 +79,26 @@ final class CategoryTable extends PowerGridComponent
         $this->js('alert('.$rowId.')');
     }
 
-    public function actions(Category $row): array
+    public function actions($row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+            Button::make('edit')
+                ->bladeComponent('category.edit', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Edit Client']),
+            Button::make('delete')
+                ->bladeComponent('category.delete', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Hapus Client']),
         ];
     }
+
+    public function header(): array
+    {
+
+
+        return [
+            Button::make('add', 'Tambah')
+                ->bladeComponent('category.tambah', ['modalId' => 'modal_1'])
+        ];
+    }
+
 
     /*
     public function actionRules($row): array

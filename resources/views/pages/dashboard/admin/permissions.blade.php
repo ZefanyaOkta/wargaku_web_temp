@@ -10,7 +10,7 @@
                     <li>
                         <a class="font-medium" href="index.html">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary">Roles & Permission</li>
+                    <li class="font-medium text-primary">Permission</li>
                 </ol>
             </nav>
         </div>

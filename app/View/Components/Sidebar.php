@@ -59,6 +59,12 @@ class Sidebar extends Component
             'href' => "dashboard.admin.oauth.index"
         ]) : null;
 
+        array_push($main_menus, [
+            'title' => 'Kategori',
+            'icon' => 'fa-solid fa-cog',
+            'href' => "dashboard.admin.categories.index"
+        ]);
+
         return $main_menus;
     }
 }
