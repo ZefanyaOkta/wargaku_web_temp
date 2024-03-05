@@ -7,14 +7,14 @@
         <form action={{ route('register') }} method="POST">
             @csrf
             @if($errors->any())
-        <div class="alert alert-danger" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        </div>
-@endif
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="reg-container">
                 <div class="reg-left">
                     <div class="input-container-register">

@@ -65,7 +65,9 @@ export default {
                 warning: '#FFA70B',
                 primaryRed:' #D10100',
                 'gray-200': '#f2f2f2',
-                'graytitle': '#4c4c4c',
+                graytitle: '#4c4c4c',
+                buttoncol: '#e5e5e5',
+                labelform: '#737373',
             },
             fontSize: {
                 'title-xxl': ['44px', '55px'],
