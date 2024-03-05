@@ -4,7 +4,7 @@
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <a href="index.html" class="flex items-center">
-            <img src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo" class="mr-2" />
+            <img src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo"/>
             <h1 class="text-4xl font-bold text-gray-200">WargaKu</h1>
         </a>
 
@@ -28,7 +28,7 @@
                 <ul class="mb-6 flex flex-col gap-1.5">
 
                     <x-sidebar-menu title="Beranda" icon="fa-solid fa-home" href="dashboard.index" />
-                    <x-sidebar-menu title="Panduan" icon="fa-solid fa-book" href="dashboard.index" />
+                    <x-sidebar-menu title="Panduan" icon="fa-solid fa-book" href="dashboard.panduan" />
                     {{-- <x-sidebar-menu title="Profil" icon="fa-solid fa-user" href="dashboard.account" /> --}}
                     <x-sidebar-dropdown-menu title="Roles & Permission"  icon="fa-solid fa-shield-halved">
                         <x-slot:menu>
