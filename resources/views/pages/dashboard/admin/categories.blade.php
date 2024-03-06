@@ -1,8 +1,6 @@
 <x-app-layout page="Kategori">
     <div class="mb-6 flex flex-row gap-3 items-center justify-between">
-        <h2 class="text-xl font-bold text-black dark:text-white">
-            Kategori Menu Beranda
-        </h2>
+        <h2 class="text-xl font-bold text-graytitle dark:text-white">Kategori Menu Beranda</h2>
 
         <nav>
             <ol class="flex items-center gap-2">

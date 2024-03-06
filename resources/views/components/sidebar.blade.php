@@ -1,11 +1,11 @@
 <aside :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-primaryRed  duration-300 ease-linear dark:bg-black lg:static lg:translate-x-0 rounded-tr-xl rounded-br-lg"
+    class="absolute left-0 top-0 z-9999 flex h-screen w-60 flex-col overflow-y-hidden bg-primaryRed  duration-300 ease-linear dark:bg-black lg:static lg:translate-x-0 rounded-tr-lg rounded-br-lg"
     @click.outside="sidebarToggle = false">
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <a href="index.html" class="flex items-center">
-            <img src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo"/>
-            <h1 class="text-4xl font-semibold text-gray-200">WargaKu</h1>
+            <img class="h-15" src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo"/>
+            <h1 class="text-3xl font-semibold text-gray-200">WargaKu</h1>
         </a>
 
         <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">

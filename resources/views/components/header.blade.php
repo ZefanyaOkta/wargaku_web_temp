@@ -29,11 +29,11 @@
             </button>
             <!-- Hamburger Toggle BTN -->
             <a class="block flex-shrink-0 lg:hidden" href="index.html">
-                <img src="{{ url('/images/logo/logo-icon.svg') }}" alt="Logo" />
+                <img class="h-15" src="{{ url('images/logo/wargaku_photo.png') }}" alt="Logo" />
             </a>
         </div>
         <div class="hidden sm:block">
-            <form action="https://formbold.com/s/unique_form_id" method="POST">
+            {{-- <form action="https://formbold.com/s/unique_form_id" method="POST">
                 <div class="relative">
                     <button class="absolute left-0 top-1/2 -translate-y-1/2">
                         <svg class="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
@@ -51,7 +51,7 @@
                     <input type="text" placeholder="Ketik untuk mencari..."
                         class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125" />
                 </div>
-            </form>
+            </form> --}}
         </div>
 
         <div class="flex items-center gap-3 2xsm:gap-7">
@@ -313,9 +313,9 @@
                 <!-- Dropdown Start -->
                 <div x-show="dropdownOpen"
                     class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                    <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
+                    <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-5 dark:border-strokedark">
                         <li>
-                            <a href="profile.html"
+                            <a href="{{route('dashboard.account')}}"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -329,7 +329,7 @@
                                 My Profile
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="messages.html"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
@@ -340,8 +340,8 @@
                                 </svg>
                                 My Contacts
                             </a>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="settings.html"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
@@ -355,7 +355,7 @@
                                 </svg>
                                 Account Settings
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <form action="{{ route('logout') }}" method="POST" id="logout"> @csrf
                     </form>
