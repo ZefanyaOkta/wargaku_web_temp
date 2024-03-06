@@ -12,6 +12,8 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
+        // Check if User is authenticated uisng Laravel Authenticaion
+
         return $request->expectsJson() ? null : route('login');
     }
 }

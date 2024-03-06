@@ -293,12 +293,20 @@
             <div class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="hidden text-right lg:block">
-                        <span class="block text-sm font-medium text-black dark:text-white">{{Auth::user()->name}}</span>
+                        <span class="block text-sm font-medium text-black dark:text-white">
+                            @auth('web')
+                            {{ Auth::user()->name }}
+                            @else
+                            {{ session('user')->name }}
+                            @endauth
+                        </span>
                     </span>
 
                     <div class="avatar">
                         <div class="w-10 rounded-full">
-                          <img src="{{Auth::user()->avatar()}}" />
+                          <img
+                           src="@auth('web') {{Auth::user()->avatar()}} @else https://ui-avatars.com/api/?name={{str_replace(' ', '+', session('user')->name)}}&background=4e73df&color=ffffff&size=100 @endauth"
+                          />
                         </div>
                       </div>
 
@@ -357,7 +365,7 @@
                             </a>
                         </li> --}}
                     </ul>
-                    <form action="{{ route('logout') }}" method="POST" id="logout"> @csrf
+                    <form action="{{ route('logout') }}" method="GET" id="logout">
                     </form>
                     <button
                         class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"

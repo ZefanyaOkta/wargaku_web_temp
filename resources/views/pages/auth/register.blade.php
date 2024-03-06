@@ -50,15 +50,17 @@
                     <div class="input-container-register">
                         <p>Jenis Kelamin</p>
                         <select class="select-field-register" name="jenis_kelamin" id="jenisKelamin">
-                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                            <option value="" selected>Pilih Jenis Kelamin</option>
                             <option value="laki-laki">Laki-laki</option>
                             <option value="perempuan">Perempuan</option>
                         </select>
                     </div>
                     <div class="input-container-register">
                         <p>Kecamatan</p>
-                        <select class="select-field-register" class="select-field" name="kecamatan" id="kecamatan">
-                            <option value="" disabled selected>Pilih Kecamatan</option>
+                        <select class="select-field-register" class="select-field" name="kecamatan" id="kecamatan" >
+                            @foreach ($kecamatan as $k)
+                                <option value="{{$k->id}}" @if ($k->id == 0) selected @endif>{{$k->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="input-container-register">
@@ -89,3 +91,36 @@
         </form>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#kecamatan').change(function () {
+            var kecamatan_id = $(this).val();
+            if (kecamatan_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{url('kelurahan')}}/" + kecamatan_id,
+                    success: function (res) {
+                        if (res) {
+                            //Delete index 0
+                            $("#kelurahan").empty();
+                            $("#kelurahan").append(`<option value="${res[0]['id']}" disabled selected>${res[0]['name']}</option>`);
+                            res.shift();
+                            $.each(res, function (key, value) {
+                                console.log(value);
+                                $("#kelurahan").append(`<option value="${value['id']}">${value['name']}</option>`);
+                            });
+                        } else {
+                            $("#kelurahan").empty();
+                        }
+                    }
+                });
+            } else {
+                $("#kelurahan").empty();
+            }
+        });
+    });
+</script>
+@endpush
+

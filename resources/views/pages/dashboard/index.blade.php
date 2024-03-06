@@ -14,6 +14,7 @@
         </div>
     </div>
 
+
     <div class="col-span-5 xl:col-span-3">
         <div class="rounded-lg shadow-md bg-white dark:border-strokedark dark:bg-boxdark">
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 p-4">

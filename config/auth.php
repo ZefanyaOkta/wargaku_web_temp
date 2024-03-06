@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'media_center' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
