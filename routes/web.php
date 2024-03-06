@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +20,20 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-
-Route::get('/client', function (Request $request) {
-    return view('client', [
-        'clients' => $request->user()->clients
-    ]);
-});
-
 Route::get('/users', function () {
     $users = \App\Models\User::all();
     return json_decode($users);
 });
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login.index');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register.index');
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+});
+
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\Index::class, 'index'])->name('index');
@@ -43,4 +48,3 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::resource('categories', App\Http\Controllers\Dashboard\Admin\CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
     });
 });
-
