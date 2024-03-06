@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AuthToken;
+use App\Http\Middleware\CheckAccessToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'auth.token' => AuthToken::class,
     ];
 }

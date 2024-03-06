@@ -8,6 +8,7 @@
         <form action={{ route('login')}} method="POST">
             @csrf
             @if($errors->any())
+
             <div class="alert alert-danger" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -16,8 +17,9 @@
             </ul>
             </div>
     @endif
+    <input type="hidden" name="admin" value="{{$admin}}">
             <p class="label-login">Username atau Email</p>
-            <input class="input-field" name="email" type="text" placeholder="Masukkan username atau email anda...">
+            <input class="input-field" name="username" type="text" placeholder="Masukkan username atau email anda...">
             <p class="label-login">Password</p>
             <input class="input-field" name="password" type="password" placeholder="Masukkan password anda...">
             <a class="forgot-password-link" href="#">Lupa Password?</a>

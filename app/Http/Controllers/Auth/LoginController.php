@@ -10,38 +10,75 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('pages.auth.login');
+        return view('pages.auth.login',['admin' => 0]);
     }
 
-    public function login(Request $request)
+    public function adminLogin()
     {
-        $credentials = $request->only('email', 'password');
+        return view('pages.auth.login', ['admin' => 1]);
+    }
 
-        // //Check if email is an email or NIK
-        // if (filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
-        //     $email = User::where('email', $credentials['email'])->first();
-        // }
+    public function login(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'admin' => 'boolean|required'
+        ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        if($request->admin){
+            $credentials = $request->only('username', 'password');
 
-            return redirect()->intended('dashboard');
+            if (Auth::attempt(['email' => $request->username, 'password' => $request->password])) {
+                $request->session()->regenerate();
+
+                return redirect()->intended('dashboard');
+            }
+
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
+
         }
+
+        $credentials = $request->only('username', 'password');
+
+        $client = new \GuzzleHttp\Client();
+
+        try{
+            $response = $client->post('https://api-mc.surabaya.go.id/api/mediacenter/login', [
+                'form_params' => [
+                    'user' => $request->username,
+                    'password' => $request->password,
+                ]
+            ]);
+
+            $res_body = json_decode($response->getBody());
+
+            if($res_body->status == 'success'){
+                session()->put([
+                    'user' => $res_body,
+                    'access_token' => $res_body->access_token,
+                ]);
+
+                return redirect()->intended('dashboard');
+            }
+        }catch(\GuzzleHttp\Exception\ClientException $e){
+            return back()->withErrors([
+                'email' => $e->getMessage(),
+            ]);
+        }
+
+
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request){
+        $request->session()->flush();
         Auth::logout();
-
-        if ($request->hasSession()) {
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-        }
-
-        return redirect('login');
+        return redirect()->route('login');
     }
+
 }

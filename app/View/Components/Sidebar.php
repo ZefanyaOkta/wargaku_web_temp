@@ -41,7 +41,8 @@ class Sidebar extends Component
         //Guest Menu: Beranda, Akun, Pengumuman
         $main_menus = [];
 
-        auth()->user()->can('menu-roles') ? array_push($main_menus, [
+        if(auth()->guard('web')->check()){
+            auth()->user()->can('menu-roles') ? array_push($main_menus, [
             'title' => 'Roles',
             'icon' => 'fa-solid fa-users',
             'href' => "dashboard.admin.roles.index"
@@ -64,6 +65,8 @@ class Sidebar extends Component
             'icon' => 'fa-solid fa-cog',
             'href' => "dashboard.admin.categories.index"
         ]);
+        }
+
 
         return $main_menus;
     }
