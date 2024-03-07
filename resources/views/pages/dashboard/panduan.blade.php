@@ -19,7 +19,7 @@
                     <div class="flex items-center justify-center">
                         <img class="w-100" src="{{ url('images/illustration/guidance.png') }}" alt="Guidance" />
                     </div>
-                    <button class="bg-primaryRed text-buttoncol rounded-md shadow-md w-90 h-9 hover:font-medium">Unduh
+                    <button class="bg-primaryRed text-white rounded-md shadow-md w-90 h-10 hover:font-medium">Unduh
                         Panduan</button>
                 </div>
             </div>

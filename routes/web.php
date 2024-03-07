@@ -53,3 +53,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth.token'])->grou
         Route::resource('categories', App\Http\Controllers\Dashboard\Admin\CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
     });
 });
+
+Route::get('/test-404', function(){
+    return view('errors.404');
+});
