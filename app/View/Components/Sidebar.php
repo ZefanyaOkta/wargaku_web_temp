@@ -60,11 +60,11 @@ class Sidebar extends Component
             'href' => "dashboard.admin.oauth.index"
         ]) : null;
 
-        array_push($main_menus, [
+        auth()->user()->can('menu-kategori') ? array_push($main_menus, [
             'title' => 'Kategori',
             'icon' => 'fa-solid fa-cog',
             'href' => "dashboard.admin.categories.index"
-        ]);
+        ]) : null;
         }
 
 

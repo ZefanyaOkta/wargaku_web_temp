@@ -36,6 +36,14 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit permissions']);
         Permission::create(['name' => 'hapus permissions']);
 
+        //Category permissions
+        Permission::create(['name' => 'menu-katagori']);
+        Permission::create(['name' => 'lihat katagori']);
+        Permission::create(['name' => 'tambah katagori']);
+        Permission::create(['name' => 'edit katagori']);
+        Permission::create(['name' => 'hapus katagori']);
+
+
         $admin = Role::where('name', 'Admin')->first();
 
         $admin->givePermissionTo([
@@ -55,6 +63,11 @@ class PermissionSeeder extends Seeder
             'tambah permissions',
             'edit permissions',
             'hapus permissions',
+            'menu-katagori',
+            'lihat katagori',
+            'tambah katagori',
+            'edit katagori',
+            'hapus katagori',
         ]);
     }
 }

@@ -9,6 +9,8 @@ class AccountSettingController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.account');
+        $user = auth()->user() ?? session('user');
+
+        return view('pages.dashboard.account', compact('user'));
     }
 }

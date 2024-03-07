@@ -16,6 +16,7 @@ class Tambah extends Component
     public function __construct($modalId)
     {
         $this->modalId = $modalId;
+
     }
 
     /**

@@ -8,13 +8,18 @@ use Illuminate\View\Component;
 
 class Delete extends Component
 {
+    public $modalId, $title, $kategori;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($modalId, $title, $rowId)
     {
-        //
+        $this->modalId = $modalId;
+        $this->title = $title;
+
+        $this->kategori = \App\Models\Category::find($rowId);
     }
+
 
     /**
      * Get the view / contents that represent the component.

@@ -28,7 +28,7 @@
                     </div>
                     <div class="input-container-register">
                         <p>Nama</p>
-                        <input class="input-field-register" name="nama" type="text" placeholder="Nama Anda...">
+                        <input class="input-field-register" name="name" type="text" placeholder="Nama Anda...">
                     </div>
                     <div class="input-container-register">
                         <p>Nomor Telepon</p>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="input-container-register">
                         <p>Konfirmasi Password</p>
-                        <input class="input-field-register" name="password" type="password"
+                        <input class="input-field-register" name="password_confirmation" type="password"
                             placeholder="Konfirmasi Password Anda...">
                     </div>
                 </div>
