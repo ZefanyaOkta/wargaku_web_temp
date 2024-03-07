@@ -19,17 +19,18 @@
         <div class="rounded-lg shadow-md bg-white dark:border-strokedark dark:bg-boxdark">
             <div class="grid grid-cols-1 gap-15 sm:grid-cols-2 md:grid-cols-3 p-10 pb-20">
                 @foreach ($categories as $category)
-                <a href="{{$category->link}}"
+                <a href="{{ $category->link }}"
                     class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300">
-                    {{-- categories attribute --}}
-                    {{-- - Image
-            - Title
-            - Href/Link --}}
-                    {{-- <img class="w-30" src="{{ $category->image }}" alt="Logo" /> --}}
-                    <img class=" max-h-40 translate-y-7" src="{{ url('images/categories/' . $category->name . '.jpg') }}" alt="categories" />
-
-                    <div class="text-lg w-50 text-center font-medium bg-primaryRed text-white p-3 rounded-md shadow-md translate-y-7 hover:opacity-90">{{$category->name}}</div>
-                </a>
+                     {{-- Image --}}
+                     <img class="max-h-40 translate-y-7"
+                          src="{{ file_exists(public_path('images/categories/' . $category->name . '.jpg')) ? url('images/categories/' . $category->name . '.jpg') : url('images/categories/dummy.png') }}"
+                          alt="categories" />
+ 
+                     {{-- Title --}}
+                     <div class="text-lg w-50 text-center font-medium bg-primaryRed text-white p-3 rounded-md shadow-md translate-y-7 hover:opacity-90">
+                         {{ $category->name }}
+                     </div>
+                 </a>
                 @endforeach
             </div>
         </div>
