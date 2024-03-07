@@ -26,8 +26,7 @@
             - Title
             - Href/Link --}}
                     {{-- <img class="w-30" src="{{ $category->image }}" alt="Logo" /> --}}
-                    <img class=" max-h-40 translate-y-7" src="{{ url('images/categories/' . $category->name . '.jpg') }}" alt="categories" />
-
+                    <img class=" max-h-40 translate-y-7" src="{{ asset('storage/categories/' . $category->name . '.jpg') }}" alt="categories" />;
                     <div class="text-lg w-50 text-center font-medium bg-primaryRed text-white p-3 rounded-md shadow-md translate-y-7 hover:opacity-90">{{$category->name}}</div>
                 </a>
                 @endforeach
