@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -20,14 +21,15 @@ class CategoryController extends Controller
 
         $request->validate([
             'name' => 'required|string',
-            //'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             //'link' => 'nullable|string',
             //'type' => 'required|in:internal,external',
         ]);
 
-       // if ($request->hasFile('image')) {
-           // $data['image'] = $request->file('image')->store('categories', 'public');
-       // }
+       if ($request->hasFile('image')) {
+            //File name == $request->name . '.' . $request->file('image')->extension();
+            $request->file('image')->storeAs('categories', $request->name . '.' . $request->file('image')->extension(), 'public');
+        }
 
         $category = \App\Models\Category::create([
             'name' => $request->name,
@@ -42,21 +44,21 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'slug' => 'required|string|unique:categories,slug,' . $id,
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'link' => 'nullable|string',
-            'type' => 'required|in:internal,external',
         ]);
 
         $category = \App\Models\Category::findOrFail($id);
 
-        $data = $request->all();
-
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('categories', 'public');
+            // Delete old image
+            Storage::disk('public')->delete('categories/' . $category->name . '.' . $category->image->extension());
+            $request->file('image')->storeAs('categories', $request->name . '.' . $request->file('image')->extension(), 'public');
         }
 
-        $category->update($data);
+        $category->name = $request->name;
+        $category->slug = \Illuminate\Support\Str::slug($request->name);
+        $category->link = "#";
+        $category->save();
 
         return redirect()->route('dashboard.admin.categories.index')->with('success', 'Category updated successfully');
     }

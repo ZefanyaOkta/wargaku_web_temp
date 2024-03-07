@@ -1,7 +1,7 @@
 <x-add-button modalId="{{$modalId}}" />
 
 <x-modal-component title="Tambah Kategori" modalId="{{$modalId}}">
-    <form action="{{ route('dashboard.admin.categories.store') }}" method="POST">
+    <form action="{{ route('dashboard.admin.categories.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <x-alert type="danger">
@@ -22,15 +22,15 @@
             </div>
 
             {{-- Icon --}}
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Icon<span class="text-meta-1">*</span>
 
                 </label>
 
-                <input type="file" name="icon" required
+                <input type="file" name="image" required accept="image/*"
                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-3 py-2 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
-            </div> --}}
+            </div>
 
 
             <button

@@ -13,5 +13,5 @@ class Index extends Controller
         $categories = \App\Models\Category::all();
 
         return view('pages.dashboard.index', compact('categories'));
-    }
+}
 }
