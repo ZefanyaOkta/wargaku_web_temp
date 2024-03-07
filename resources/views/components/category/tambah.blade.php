@@ -7,7 +7,7 @@
         <x-alert type="danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>-*-*******************************-*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+                <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </x-alert>
@@ -20,6 +20,17 @@
                 <input type="text" name="name" required
                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-3 py-2 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
             </div>
+
+            {{-- Icon --}}
+            {{-- <div class="mb-3">
+                <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    Icon<span class="text-meta-1">*</span>
+
+                </label>
+
+                <input type="file" name="icon" required
+                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-3 py-2 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+            </div> --}}
 
 
             <button

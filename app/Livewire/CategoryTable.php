@@ -9,6 +9,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
+use PowerComponents\LivewirePowerGrid\Facades\Rule;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -55,13 +56,12 @@ final class CategoryTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id')
-                ->sortable()
-                ->searchable(),
+
 
             Column::make('Name', 'name')
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->headerAttribute(styleAttr: 'width: 85%'),
 
             Column::action('Action')
         ];
@@ -73,26 +73,19 @@ final class CategoryTable extends PowerGridComponent
         ];
     }
 
-    #[\Livewire\Attributes\On('edit')]
-    public function edit($rowId): void
-    {
-        $this->js('alert('.$rowId.')');
-    }
 
     public function actions($row): array
     {
         return [
             Button::make('edit')
-                ->bladeComponent('category.edit', ['modalId' => 'modal_edit_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Edit Client']),
+                ->bladeComponent('category.edit', ['modalId' => 'modal_edit_' . $row->id , 'rowId' => $row->id, 'title' => 'Edit Kategori']),
             Button::make('delete')
-                ->bladeComponent('category.delete', ['modalId' => 'modal_delete_' . substr($row->id, 0, 8), 'rowId' => $row->id, 'title' => 'Hapus Client']),
+                ->bladeComponent('category.delete', ['modalId' => 'modal_delete_' . $row->id, 'rowId' => $row->id, 'title' => 'Hapus Kategori']),
         ];
     }
 
     public function header(): array
     {
-
-
         return [
             Button::make('add', 'Tambah')
                 ->bladeComponent('category.tambah', ['modalId' => 'modal_1'])
@@ -100,15 +93,18 @@ final class CategoryTable extends PowerGridComponent
     }
 
 
-    /*
+
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
+                ->when(fn() => auth()->user()->can('edit kategori') === false)
+                ->hide(),
+                Rule::button('delete')
+                ->when(fn() => auth()->user()->can('hapus kategori') === false)
                 ->hide(),
         ];
     }
-    */
+
 }

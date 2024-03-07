@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -29,8 +30,8 @@ class RegisterController extends Controller
         return response()->json($kelurahan->result);
     }
 
-    public function register(array $input){
-        Validator::make($input, [
+    public function register(Request $request){
+        Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
@@ -38,7 +39,7 @@ class RegisterController extends Controller
                 'email',
                 'max:255',
             ],
-            'password' => $this->passwordRules(),
+            'password' =>  ['required', 'string', Password::default(), 'confirmed'],
             'nik' => [
                 'required',
                 'string',
@@ -51,8 +52,33 @@ class RegisterController extends Controller
             'kecamatan' => ['required', 'string', 'max:255'],
             'kelurahan' => ['required', 'string', 'max:255'],
         ])->validate();
+        dd($request->all());
 
         $client = new \GuzzleHttp\Client();
+
+        try{
+            $response = $client->post('https://api-mc.surabaya.go.id/api/mediacenter/register', [
+            'form_params' => [
+                "user" => $request->email,
+                'nik' => $request->nik,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'tanggal_lahir' => $request->date_of_birth,
+                'alamat' => $request->address,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'kecamatan_id' => $request->kecamatan,
+                'kelurahan_id' => $request->kelurahan,
+                'password' => $request->password,
+                'c_password' => $request->password,
+            ]
+        ]);
+
+
+        }catch(\Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+
+
 
 
 
