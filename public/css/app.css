@@ -41,7 +41,7 @@ h1 {
 .label-login {
     font-size: 15px;
     font-weight: 300;
-    color: #737373;
+    color: #808080;
     margin-bottom: 5px;
 }
 
@@ -51,23 +51,22 @@ h1 {
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 0px solid #ccc;
+    border: none;
     border-radius: 10px;
     font-size:15px;
-    font-weight: 300;
-    color: #666666;
+    color: #4c4c4c;
 }
 
 input::placeholder {
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     color: #cccccc;
 }
 
 .login-button {
     height: 40px;
     background-color: #D10100;
-    color: #E5E5E5;
+    color: #ffffff;
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -76,6 +75,10 @@ input::placeholder {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     font-weight: 700;
+}
+
+.login-button:hover {
+    opacity: 90%;
 }
 
 .forgot-password-link {
@@ -133,10 +136,9 @@ input::placeholder {
     /* margin: 0 auto; */
     margin-left: 45%;
     background-color: #fff;
-    padding: 20px;
+    padding: 0px 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 
 .reg-container {
@@ -167,8 +169,11 @@ input::placeholder {
 
 .input-container-register p {
     margin: 0;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     margin-right: 10px;
+    font-size: 15px;
+    font-weight: 300;
+    color: #808080;
 }
 
 .registration-form {
@@ -179,7 +184,7 @@ input::placeholder {
 .input-container-register {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
 }
 
 .reg-left {
@@ -192,11 +197,13 @@ input::placeholder {
 textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 4px;
-
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+    font-size:15px;
+    color: #4c4c4c;
 }
 
 .select-field-register {
@@ -205,7 +212,7 @@ textarea {
 
 .regis-button {
     background-color: #D10100;
-    color: #E5E5E5;
+    color: #ffffff;
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -214,6 +221,16 @@ textarea {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     font-weight: 700;
+}
+
+.regis-button:hover {
+    opacity: 90%;
+}
+
+.input-field-register::placeholder {
+    font-size: 13px;
+    font-weight: 500;
+    color: #cccccc;
 }
 
 .agreement-text {

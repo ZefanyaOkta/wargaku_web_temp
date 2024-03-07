@@ -1,8 +1,16 @@
 <x-app-layout page="Akun">
-    <div class="mx-auto max-w-270">
-        <!-- === TITLE === -->
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 class="text-title-md2 font-bold text-graytitle dark:text-white">Akun</h2>
+    <div>
+        <div class="mb-6 flex flex-row gap-3 items-center justify-between">
+            <h2 class="text-xl font-bold text-graytitle dark:text-white">Akun</h2>
+
+            <nav>
+                <ol class="flex items-center gap-2">
+                    <li>
+                        <a class="font-medium" href="index.html">Others /</a>
+                    </li>
+                    <li class="font-medium text-primary">Akun</li>
+                </ol>
+            </nav>
         </div>
 
         <!-- ====== Settings Section Start ====== -->
@@ -12,19 +20,25 @@
                 <div class="rounded-lg bg-white shadow-md dark:border-strokedark dark:bg-boxdark">
                     <div class="pt-7 text-center">
                         <h3 class="font-medium text-2xl mb-5 text-graytitle dark:text-white">John Doe</h3>
-                        <img class="mx-auto h-70 rounded-full border-2 border-gray-200"
-                            src="{{ url('images/illustration/guidance.png') }}" alt="User" />
+                        <img class="mx-auto h-60 rounded-full border-2 border-gray-200"
+                            src="{{ url('images/illustration/profile.png') }}" alt="User" />
 
-                            <div style="display: flex; justify-content: right; align-items: center; padding-right: 5%; padding-bottom:5%;">
-                                <svg class="h-8 w-8 p-1.5 border text-primaryRed rounded-full" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                        <div
+                            style="display: flex; justify-content: right; align-items: center; padding-right: 5%;  transform: translateY(-65%);">
+                            <span
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="gray" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
                                     <line x1="10" y1="11" x2="10" y2="17"></line>
                                     <line x1="14" y1="11" x2="14" y2="17"></line>
                                 </svg>
-                            </div>
+                            </span>
+                        </div>
                     </div>
                     <div class="p-5">
                         <form action="#">
