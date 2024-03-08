@@ -23,8 +23,8 @@
                     class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300">
                      {{-- Image --}}
                      <img class="max-h-40 translate-y-7"
-                          src="{{ file_exists(public_path('images/categories/' . $category->name . '.jpg')) ? url('images/categories/' . $category->name . '.jpg') : url('images/categories/dummy.png') }}"
-                          alt="{{$category->slug}}" />
+                          src="{{ file_exists(public_path('storage/categories/' . $category->name . '.jpg')) ? url('images/categories/' . $category->name . '.jpg') : url('images/categories/dummy.png') }}"
+                          alt="categories" />
 
                      {{-- Title --}}
                      <div class="text-lg w-50 text-center font-medium bg-primaryRed text-white p-3 rounded-md shadow-md translate-y-7 hover:opacity-90">
