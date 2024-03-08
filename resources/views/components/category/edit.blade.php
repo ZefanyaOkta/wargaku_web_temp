@@ -2,8 +2,9 @@
 
 
 <x-modal-component title="Tambah Kategori" modalId="{{$modalId}}">
-    <form action="{{ route('dashboard.admin.categories.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('dashboard.admin.categories.update', ['category' => $kategori->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         @if($errors->any())
         <x-alert type="danger">
             <ul>
@@ -28,7 +29,7 @@
                     Icon<span class="text-meta-1">*</span>
                 </label>
 
-                <input type="file" name="image" required id="image" accept="image/*
+                <input type="file" name="image" id="image" accept="image/*
                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-3 py-2 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
             </div>
 

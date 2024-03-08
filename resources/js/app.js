@@ -3,6 +3,8 @@ import './bootstrap';
 import Alpine from 'alpinejs';
 import persist from "@alpinejs/persist";
 import flatpickr from "flatpickr";
+import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
+
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;

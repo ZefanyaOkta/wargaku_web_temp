@@ -25,7 +25,7 @@
                      <img class="max-h-40 translate-y-7"
                           src="{{ file_exists(public_path('storage/categories/' . $category->name . '.jpg')) ? url('images/categories/' . $category->name . '.jpg') : url('images/categories/dummy.png') }}"
                           alt="categories" />
- 
+
                      {{-- Title --}}
                      <div class="text-lg w-50 text-center font-medium bg-primaryRed text-white p-3 rounded-md shadow-md translate-y-7 hover:opacity-90">
                          {{ $category->name }}
