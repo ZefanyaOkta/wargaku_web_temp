@@ -57,3 +57,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth.token'])->grou
 Route::get('/test-404', function(){
     return view('errors.404');
 });
+
+Route::get('/test-403', function(){
+    return view('errors.403');
+});

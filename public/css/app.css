@@ -340,3 +340,18 @@ textarea {
         flex-direction: column;
     }
 }
+
+
+
+/* -------- ERROR -------- */
+
+.bg-covererror {
+    background-image: url('/images/background/bglogin.png');
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
