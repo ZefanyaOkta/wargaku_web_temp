@@ -9,7 +9,8 @@ export default {
         "./resources/**/*.vue",
         './app/Http/Livewire/**/*Table.php',
         './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
-        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php',
+        "@mariojgt/wind-notify/packages/toasts/messages.js"
     ],
     darkMode: 'class', // or 'media' or 'class
     presets: [

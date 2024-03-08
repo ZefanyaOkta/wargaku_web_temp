@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@alpinejs/persist": "^3.12.0",
+        "@mariojgt/wind-notify": "^0.1.2",
         "alpinejs": "^3.13.5",
         "apexcharts": "^3.36.3",
         "flatpickr": "^4.6.13",

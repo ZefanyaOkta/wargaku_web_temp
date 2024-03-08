@@ -43,7 +43,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:categories,name',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -53,6 +53,14 @@ class CategoryController extends Controller
             // Delete old image
             Storage::disk('public')->delete('categories/' . $category->name . '.' . $category->image->extension());
             $request->file('image')->storeAs('categories', $request->name . '.' . $request->file('image')->extension(), 'public');
+        }else{
+            $newFileName = $request->name . '.' . $category->image->extension();
+
+            $old_file = 'categories/' . $category->name . '.' . $category->image->extension();
+
+            if (Storage::disk('public')->exists($old_file)) {
+                Storage::disk('public')->move($old_file, 'categories/' . $newFileName);
+            }
         }
 
         $category->name = $request->name;
