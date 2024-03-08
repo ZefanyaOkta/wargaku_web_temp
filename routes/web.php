@@ -61,3 +61,15 @@ Route::get('/test-404', function(){
 Route::get('/test-403', function(){
     return view('errors.403');
 });
+
+Route::get('/test-401', function(){
+    return view('errors.401');
+});
+
+Route::get('/test-405', function(){
+    return view('errors.405');
+});
+
+Route::get('/test-505', function(){
+    return view('errors.505');
+});
