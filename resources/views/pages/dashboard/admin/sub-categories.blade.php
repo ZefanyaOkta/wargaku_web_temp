@@ -25,7 +25,7 @@
 
 
         <div>
-            <livewire:category-table />
+            <livewire:sub-category-table/>
         </div>
     </div>
 </x-app-layout>
