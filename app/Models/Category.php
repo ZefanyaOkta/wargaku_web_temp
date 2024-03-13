@@ -11,13 +11,16 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'slug',
-        'link',
-        'type',
+        'icon',
     ];
 
-    public function getImageAttribute($value)
+    public function sub_categories()
     {
-        return $value ? asset('storage/' . $value) : url('images/logo/wargaku_photo.png');
+        return $this->hasMany(SubCategory::class);
     }
+
 }
+
+
+
+

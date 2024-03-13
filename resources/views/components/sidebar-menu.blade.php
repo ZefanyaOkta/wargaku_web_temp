@@ -3,9 +3,11 @@
         href="{{ route($href) }}" @click="selected = (selected === '{{ $title }}' ? '' : '{{ $title }}')"
         :class="{ 'bg-white text-primaryRed': (selected === '{{ $title }}') && (page === '{{ $title }}') }">
 
+        @if($icon)
         <span class="w-6">
             <i class="{{ $icon ?? "" }}"></i>
         </span>
+        @endif
 
         {{ $title }}
     </a>

@@ -31,8 +31,18 @@
                     <x-sidebar-menu title="Panduan" icon="fa-solid fa-book" href="dashboard.panduan" />
 
                     @foreach ($menus as $menu)
+                        @if(array_key_exists('sub_menu', $menu))
+                            <x-sidebar-dropdown-menu title="{{ $menu['title'] }}" icon="{{ $menu['icon'] }}">
+                                <x-slot:menu>
+                                    @foreach ($menu['sub_menu'] as $sub_menu)
+                                        <x-sidebar-menu title="{{ $sub_menu['title'] }}" icon="" href="{{ $sub_menu['href'] }}" />
+                                    @endforeach
+                                </x-slot:menu>
+                            </x-sidebar-dropdown-menu>
+                        @else
                         <x-sidebar-menu title="{{ $menu['title'] }}" icon="{{ $menu['icon'] }}"
                             href="{{ $menu['href'] }}" />
+                        @endif
                     @endforeach
                     {{-- <x-sidebar-menu title="Profil" icon="fa-solid fa-user" href="dashboard.account" /> --}}
                         {{-- <x-sidebar-dropdown-menu title="Roles & Permission"  icon="fa-solid fa-shield-halved">

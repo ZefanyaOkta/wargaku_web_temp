@@ -63,7 +63,10 @@ class Sidebar extends Component
         auth()->user()->can('menu-kategori') ? array_push($main_menus, [
             'title' => 'Kategori',
             'icon' => 'fa-solid fa-cog',
-            'href' => "dashboard.admin.categories.index"
+            'sub_menu' => [
+                ['title' => 'Kategori Utama', 'href' => 'dashboard.admin.categories.index'],
+                ['title' => 'Sub-Kategori', 'href' => 'dashboard.admin.sub-categories.index']
+            ]
         ]) : null;
         }
 

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             PermissionSeeder::class,
             CategorySeeder::class,
+            SubCategorySeeder::class,
         ]);
     }
 }

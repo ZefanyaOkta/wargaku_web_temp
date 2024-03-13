@@ -10,7 +10,7 @@ class Index extends Controller
 {
 
     public function index(){
-        $categories = \App\Models\Category::all();
+        $categories = \App\Models\Category::with('sub_categories')->get();
 
         return view('pages.dashboard.index', compact('categories'));
 }

@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
         $request->validate([
             'name' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             //'link' => 'nullable|string',
             //'type' => 'required|in:internal,external',
         ]);
@@ -30,11 +30,9 @@ class CategoryController extends Controller
             //File name == $request->name . '.' . $request->file('image')->extension();
             $request->file('image')->storeAs('categories', $request->name . '.' . $request->file('image')->extension(), 'public');
         }
-
         $category = \App\Models\Category::create([
             'name' => $request->name,
             'slug' => \Illuminate\Support\Str::slug($request->name),
-            'link' => "#",
             ]);
 
         return redirect()->route('dashboard.admin.categories.index')->with('success', 'Category created successfully');

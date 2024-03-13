@@ -13,25 +13,16 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Pengaduan Masyarakat',
-            'Kependudukan',
-            'Perizinanan dan Perizinan',
             'Kesehatan',
-            'Kios Layanan Publik',
-            'Sosial Masayarakat',
-            'Pemberdayaan Ekonomi',
-            'PPID',
-            'Pojok Uang',
-            'E-Housing',
-            'JDIH Kota Surabaya',
+            'Pendidikan',
+            'Kemiskinan',
+            'Pengaduan',
+            'Perizinan',
         ];
 
         foreach ($categories as $category) {
             \App\Models\Category::create([
                 'name' => $category,
-                'slug' => \Illuminate\Support\Str::slug($category),
-                'link' => "#",
-                'type' => 'external',
             ]);
         }
 
