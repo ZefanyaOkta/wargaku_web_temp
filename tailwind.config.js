@@ -69,6 +69,7 @@ export default {
                 graytitle: '#4c4c4c',
                 buttoncol: '#e5e5e5',
                 labelform: '#737373',
+                graytitle2: '#404040',
             },
             fontSize: {
                 'title-xxl': ['44px', '55px'],

@@ -74,3 +74,12 @@ Route::get('/test-405', function(){
 Route::get('/test-505', function(){
     return view('errors.505');
 });
+
+// test
+Route::get('/pengaduan', function(){
+    return view('pages.dashboard.pengaduan');
+});
+
+Route::get('/puskesmas', function(){
+    return view('pages.dashboard.puskesmas');
+});
