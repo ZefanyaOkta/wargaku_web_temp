@@ -17,10 +17,30 @@
     <div class="col-span-5 xl:col-span-3">
         <div class="rounded-lg shadow-md bg-white dark:border-strokedark dark:bg-boxdark">
             @foreach ($categories as $category)
+
+            {{-- MODAL "CEK GAMIS" --}}
+            <dialog id="modal_test" class="modal modal-bottom sm:modal-middle" data-theme="cupcake">
+                <div style="width: 350px; height: 250px" class="modal-box">
+                    <form method="dialog">
+                        <div class="flex items-center justify-center mb-10">
+                            <img class="w-8 mr-3 opacity-70" src="{{ url('images/icon/icon-info.svg') }}" alt="info">
+                            <h3 class="font-normal text-2xl text-graytitle">Info</h3>
+                        </div>
+                        {{-- CONTENT --}}
+                        <div class="items-center justify-center text-center ">
+                            <h3 class="items-center justify-center mb-10">NIK 0000111122223333 Termasuk Non Keluarga Miskin.</h3>
+                            <button class="bg-primaryRed text-white rounded-md shadow-md w-70 h-10 hover:opacity-80">Tutup</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </dialog>
+
             <div class="p-5">
                 <div class="flex">
                     <i class="pl-2 pb-3 pt-1 pr-2 w-10 opacity-80">
-                        {!! file_exists(public_path('images/icon/' . $category->name . '.svg')) ? file_get_contents(public_path('images/icon/' . $category->name . '.svg')) : '' !!}
+                        {!! file_exists(public_path('images/icon/' . $category->name . '.svg')) ?
+                        file_get_contents(public_path('images/icon/' . $category->name . '.svg')) : '' !!}
                     </i>
                     <h3 class="font-semibold text-2xl mb-5 text-graytitle dark:text-white">{{ $category->name }}</h3>
                 </div>
@@ -28,7 +48,8 @@
                     {{-- Subcategories --}}
                     @foreach ($category->sub_categories as $subcategory)
                     <a href="{{ $subcategory->link }}"
-                        class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300">
+                        class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300"
+                        @if ($subcategory->name === 'Cek Gamis') onclick="openModal(event)" @endif>
                         {{-- Subcategory image --}}
                         <img class="max-h-40 translate-y-7"
                             src="{{ file_exists(public_path('images/categories/' . $subcategory->name . '.jpg')) ? url('images/categories/' . $subcategory->name . '.jpg') : url('images/categories/dummy.png') }}"
@@ -45,6 +66,16 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        const modal_test = document.getElementById('modal_test');
+
+        function openModal(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            modal_test.showModal(); // Show modal dialog
+        }
+
+    </script>
 
     {{-- <div class="col-span-5 xl:col-span-3">
         <div class="rounded-lg shadow-md bg-white dark:border-strokedark dark:bg-boxdark">
