@@ -22,7 +22,7 @@ class SubCategory extends Model
 
     public function getImageAttribute($value)
     {
-        return $value ? asset('storage/' . $value) : url('images/logo/wargaku_photo.png');
+        return $value ? asset('storage/sub_categories/' . $value) : url('images/categories/dummy.png');
     }
 }
 

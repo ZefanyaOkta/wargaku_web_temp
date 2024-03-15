@@ -19,6 +19,11 @@ class Category extends Model
         return $this->hasMany(SubCategory::class);
     }
 
+    public function getIconAttribute($value)
+    {
+        return asset('storage/icon/'.$value);
+    }
+
 }
 
 

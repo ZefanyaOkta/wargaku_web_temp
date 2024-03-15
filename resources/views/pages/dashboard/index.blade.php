@@ -20,7 +20,7 @@
             <div class="p-5">
                 <div class="flex">
                     <i class="pl-2 pb-3 pt-1 pr-2 w-10 opacity-80">
-                        {!! file_exists(public_path('images/icon/' . $category->name . '.svg')) ? file_get_contents(public_path('images/icon/' . $category->name . '.svg')) : '' !!}
+                        <img src="{{ $category->icon }}" alt="icon" />
                     </i>
                     <h3 class="font-semibold text-2xl mb-5 text-graytitle dark:text-white">{{ $category->name }}</h3>
                 </div>
@@ -31,7 +31,7 @@
                         class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300">
                         {{-- Subcategory image --}}
                         <img class="max-h-40 translate-y-7"
-                            src="{{ file_exists(public_path('images/categories/' . $subcategory->name . '.jpg')) ? url('images/categories/' . $subcategory->name . '.jpg') : url('images/categories/dummy.png') }}"
+                            src="{{ $subcategory->image }}"
                             alt="subcategory" />
                         {{-- Subcategory title --}}
                         <div

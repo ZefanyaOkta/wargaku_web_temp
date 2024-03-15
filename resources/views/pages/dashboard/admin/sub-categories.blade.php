@@ -1,13 +1,13 @@
 <x-app-layout page="SubKategori">
     <div class="mb-6 flex flex-row gap-3 items-center justify-between">
-        <h2 class="text-xl font-bold text-graytitle dark:text-white">Kategori Menu Beranda</h2>
+        <h2 class="text-xl font-bold text-graytitle dark:text-white">Sub Kategori</h2>
 
         <nav>
             <ol class="flex items-center gap-2">
                 <li>
                     <a class="font-medium" href="index.html">Dashboard /</a>
                 </li>
-                <li class="font-medium text-primary">Kategori</li>
+                <li class="font-medium text-primary">Sub Kategori</li>
             </ol>
         </nav>
 
