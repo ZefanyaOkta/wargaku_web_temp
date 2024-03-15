@@ -34,8 +34,8 @@ class SubCategorySeeder extends Seeder
             ],
             'Perizinan' => [
                 ['SSW Alfa', null],
-                ['Klampid', null],
-                ['SKM', null]
+                ['Klampid', 'Klampid.jpg'],
+                ['SKM', 'SKM.jpg']
             ],
         ];
 
