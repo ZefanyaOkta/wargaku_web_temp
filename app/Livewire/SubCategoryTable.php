@@ -22,7 +22,7 @@ final class SubCategoryTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        $this->showCheckBox();
+
 
         return [
             Exportable::make('export')
@@ -37,7 +37,7 @@ final class SubCategoryTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return SubCategory::query();
+        return SubCategory::query()->join('categories', 'sub_categories.category_id', '=', 'categories.id')->select('sub_categories.*', 'categories.name as category_name');
     }
 
     public function relationSearch(): array
@@ -47,12 +47,23 @@ final class SubCategoryTable extends PowerGridComponent
 
     public function fields(): PowerGridFields
     {
-        return PowerGrid::fields();
+        return PowerGrid::fields()
+            ->add('id')
+            ->add('category_name')
+            ->add('name')
+            ->add('slug')
+            ->add('image')
+            ->add('link')
+            ->add('status')
+            ->add('auth_method')
+            ->add('auth_parameter');
     }
 
     public function columns(): array
     {
         return [
+            Column::make('Name', 'name'),
+            Column::make('Kategori', 'category_name'),
             Column::action('Action')
         ];
     }

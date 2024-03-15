@@ -52,7 +52,7 @@
                         @if ($subcategory->name === 'Cek Gamis') onclick="openModal(event)" @endif>
                         {{-- Subcategory image --}}
                         <img class="max-h-40 translate-y-7"
-                            src="{{ file_exists(public_path('images/categories/' . $subcategory->name . '.jpg')) ? url('images/categories/' . $subcategory->name . '.jpg') : url('images/categories/dummy.png') }}"
+                            src="{{ $subcategory->image }}"
                             alt="subcategory" />
                         {{-- Subcategory title --}}
                         <div
