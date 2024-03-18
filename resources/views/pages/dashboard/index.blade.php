@@ -19,7 +19,7 @@
             @foreach ($categories as $category)
 
             {{-- MODAL "CEK GAMIS" --}}
-            <dialog id="modal_test" class="modal modal-bottom sm:modal-middle" data-theme="cupcake">
+            <dialog id="modal_gamis" class="modal modal-bottom sm:modal-middle" data-theme="cupcake">
                 <div style="width: 350px; height: 250px" class="modal-box">
                     <form method="dialog">
                         <div class="flex items-center justify-center mb-10">
@@ -29,7 +29,25 @@
                         {{-- CONTENT --}}
                         <div class="items-center justify-center text-center ">
                             <h3 class="items-center justify-center mb-10">NIK 0000111122223333 Termasuk Non Keluarga Miskin.</h3>
-                            <button class="bg-primaryRed text-white rounded-md shadow-md w-70 h-10 hover:opacity-80">Tutup</button>
+                            <button class="bg-primaryRed text-white rounded-lg shadow-md w-70 h-10 hover:opacity-80">Tutup</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </dialog>
+
+            {{-- MODAL "PENGADUAN" --}}
+            <dialog id="modal_pengaduan" class="modal modal-bottom sm:modal-middle" data-theme="cupcake">
+                <div style="width: 400px; height: 330px" class="modal-box">
+                    <form method="dialog">
+                        <div class="flex items-center justify-center mb-10">
+                            <img class="w-8 mr-3 opacity-70" src="{{ url('images/icon/icon-info.svg') }}" alt="info">
+                            <h3 class="font-normal text-2xl text-graytitle">Info</h3>
+                        </div>
+                        {{-- CONTENT --}}
+                        <div class="items-center justify-center text-center ">
+                            <h3 class="items-center justify-center mb-10">Pastikan Anda memilih topik sesuai dengan pengaduan agar pengaduan yang anda sampaikan dapat diterima oleh OPD (Organisasi Perangkat Daerah) yang berwenang untuk menindaklanjuti pengaduan tersebut.</h3>
+                            <button class="bg-primaryRed text-white rounded-lg shadow-md w-70 h-10 hover:opacity-80">Tutup</button>
                         </div>
                         
                     </form>
@@ -49,7 +67,9 @@
                     @foreach ($category->sub_categories as $subcategory)
                     <a href="{{ $subcategory->link }}"
                         class="flex flex-col items-center justify-center bg-white shadow-md rounded-md transition ease-in-out delay-100 hover:scale-105 duration-300"
-                        @if ($subcategory->name === 'Cek Gamis') onclick="openModal(event)" @endif>
+                        @if ($subcategory->name === 'Cek Gamis') onclick="openGamisModal(event)" 
+                        @elseif ($subcategory->name === 'Media Center') onclick="openPengaduanModal(event)"
+                        @endif>
                         {{-- Subcategory image --}}
                         <img class="max-h-40 translate-y-7"
                             src="{{ $subcategory->image }}"
@@ -68,11 +88,17 @@
     </div>
 
     <script>
-        const modal_test = document.getElementById('modal_test');
+        const modal_gamis = document.getElementById('modal_gamis');
+        const modal_pengaduan = document.getElementById('modal_pengaduan');
 
-        function openModal(event) {
+        function openGamisModal(event) {
             event.preventDefault(); // Prevent default anchor behavior
-            modal_test.showModal(); // Show modal dialog
+            modal_gamis.showModal(); // Show modal dialog
+        }
+
+        function openPengaduanModal(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            modal_pengaduan.showModal(); // Show modal dialog
         }
 
     </script>
