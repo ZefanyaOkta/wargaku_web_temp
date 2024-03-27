@@ -8,6 +8,7 @@
     <title>
         Dashboard Testing
     </title>
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     @vite('resources/css/app.css')
     @livewireStyles
 </head>

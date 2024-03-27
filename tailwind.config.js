@@ -71,6 +71,10 @@ export default {
                 labelform: '#737373',
                 graytitle2: '#404040',
             },
+            fontFamily: {
+                sans: ['Montserrat', 'sans-serif'],
+                // You can define other font families here...
+            },
             fontSize: {
                 'title-xxl': ['44px', '55px'],
                 'title-xl': ['36px', '45px'],

@@ -21,9 +21,9 @@ class SubCategorySeeder extends Seeder
                 ['Pemeriksaan Catin', 'Pemeriksaan Catin.jpg'],
             ],
             'Pendidikan' => [
-                ['PPDB SD', null],
-                ['PPDB SMP', null],
-                ['PPDB SMA', null],
+                ['PPDB SD', 'PPDB.jpg'],
+                ['PPDB SMP', 'PPDB.jpg'],
+                ['PPDB SMA', 'PPDB.jpg'],
             ],
             'Kemiskinan' => [
                 ['ASSiK', 'ASSiK.jpg'],
@@ -33,7 +33,7 @@ class SubCategorySeeder extends Seeder
                 ['Media Center', 'Media Center.jpg'],
             ],
             'Perizinan' => [
-                ['SSW Alfa', null],
+                ['SSW Alfa', 'SSW Alfa.jpg'],
                 ['Klampid', 'Klampid.jpg'],
                 ['SKM', 'SKM.jpg']
             ],

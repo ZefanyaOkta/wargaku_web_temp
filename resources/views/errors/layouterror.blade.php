@@ -12,7 +12,7 @@
 
 <body class="bg-covererror">
     <div class="flex items-center">
-        <div class="flex-1 ml-115">
+        <div class="flex-1 ml-90">
             @yield('content')
         </div>
         <img class=" w-115" src="{{ url('images/illustration/error.png') }}" alt="error" />

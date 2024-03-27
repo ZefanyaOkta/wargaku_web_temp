@@ -1,7 +1,7 @@
 <x-app-layout page="Beranda">
     <div>
         <div class="mb-6 flex flex-row gap-3 items-center justify-between">
-            <h2 class="text-xl font-bold text-graytitle dark:text-white">Layanan WargaKu</h2>
+            <h2 class="text-xl font-bold text-graytitle dark:text-white">LAYANAN WARGAKU</h2>
 
             <nav>
                 <ol class="flex items-center gap-2">
@@ -60,7 +60,7 @@
                         {!! file_exists(public_path('images/icon/' . $category->name . '.svg')) ?
                         file_get_contents(public_path('images/icon/' . $category->name . '.svg')) : '' !!}
                     </i>
-                    <h3 class="font-semibold text-2xl mb-5 text-graytitle dark:text-white">{{ $category->name }}</h3>
+                    <h3 class="font-medium text-2xl mb-5 text-graytitle dark:text-white">{{ $category->name }}</h3>
                 </div>
                 <div class="grid grid-cols-1 gap-15 sm:grid-cols-2 md:grid-cols-3 pb-20">
                     {{-- Subcategories --}}
