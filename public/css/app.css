@@ -309,6 +309,26 @@ textarea {
 }
 
 @media (max-width: 900px) {
+    .main-container-login{
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .main-container-regis{
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .login-container {
+        width: 80%;
+        margin-left: 0;
+        box-shadow: none;
+    }
+
+    .img-sby-login{
+        width: 100%;
+    }
+
     .bg-coverlogin {
         background-size: cover;
         background-position: center;
